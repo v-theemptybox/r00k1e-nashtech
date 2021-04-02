@@ -62,15 +62,15 @@ namespace ECommerce.Backend.IdentityServer
                     RequireConsent = false,
                     RequirePkce = true,
 
-                    RedirectUris =           { $"https://localhost:44319/swagger/oauth2-redirect.html" },
-                    PostLogoutRedirectUris = { $"https://localhost:44319/swagger/oauth2-redirect.html" },
-                    AllowedCorsOrigins =     { $"https://localhost:44319" },
+                    RedirectUris =           { $"https://localhost:44318/swagger/oauth2-redirect.html" },
+                    PostLogoutRedirectUris = { $"https://localhost:44318/swagger/oauth2-redirect.html" },
+                    AllowedCorsOrigins =     { $"https://localhost:44318" },
 
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        "rookieshop.api"
+                        "rookiestore.api"
                     }
                 }
             };

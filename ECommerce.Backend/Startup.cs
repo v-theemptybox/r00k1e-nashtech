@@ -37,7 +37,7 @@ namespace ECommerce.Backend
 
             services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
+            
 
             services.AddIdentityServer(options =>
             {
@@ -81,6 +81,7 @@ namespace ECommerce.Backend
                     }
                 });
             });
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
