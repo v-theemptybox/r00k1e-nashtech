@@ -51,6 +51,27 @@ namespace ECommerce.Backend.IdentityServer
                         IdentityServerConstants.StandardScopes.Profile,
                         "rookiestore.api"
                     }
+                },
+
+                new Client
+                {
+                    ClientId = "swagger",
+                    ClientSecrets = { new Secret("secret".Sha256()) },
+                    AllowedGrantTypes = GrantTypes.Code,
+
+                    RequireConsent = false,
+                    RequirePkce = true,
+
+                    RedirectUris =           { $"https://localhost:44319/swagger/oauth2-redirect.html" },
+                    PostLogoutRedirectUris = { $"https://localhost:44319/swagger/oauth2-redirect.html" },
+                    AllowedCorsOrigins =     { $"https://localhost:44319" },
+
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "rookieshop.api"
+                    }
                 }
             };
     }
