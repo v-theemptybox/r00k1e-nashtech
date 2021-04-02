@@ -37,7 +37,7 @@ namespace ECommerce.Backend
 
             services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            
+
 
             services.AddIdentityServer(options =>
             {
@@ -81,6 +81,22 @@ namespace ECommerce.Backend
                     }
                 });
             });
+
+            services.AddAuthentication()
+            .AddLocalApi("Bearer", option =>
+            {
+                option.ExpectedScope = "rookiestore.api";
+            });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Bearer", policy =>
+                {
+                    policy.AddAuthenticationSchemes("Bearer");
+                    policy.RequireAuthenticatedUser();
+                });
+            });
+
             services.AddControllersWithViews();
         }
 
