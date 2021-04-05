@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 
 namespace ECommerce.Backend.Models
 {
@@ -14,5 +15,6 @@ namespace ECommerce.Backend.Models
 
         [PersonalData]
         public string FullName { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

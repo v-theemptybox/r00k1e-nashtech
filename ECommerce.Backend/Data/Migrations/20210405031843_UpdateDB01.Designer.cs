@@ -4,14 +4,16 @@ using ECommerce.Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ECommerce.Backend.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210405031843_UpdateDB01")]
+    partial class UpdateDB01
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,12 +67,7 @@ namespace ECommerce.Backend.Data.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId1")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("OrderId");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("Orders");
                 });
@@ -345,15 +342,6 @@ namespace ECommerce.Backend.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("ECommerce.Backend.Models.Order", b =>
-                {
-                    b.HasOne("ECommerce.Backend.Models.User", "User")
-                        .WithMany("Orders")
-                        .HasForeignKey("UserId1");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("ECommerce.Backend.Models.OrderDetail", b =>
                 {
                     b.HasOne("ECommerce.Backend.Models.Order", "Order")
@@ -461,11 +449,6 @@ namespace ECommerce.Backend.Data.Migrations
             modelBuilder.Entity("ECommerce.Backend.Models.Product", b =>
                 {
                     b.Navigation("OrderDetails");
-                });
-
-            modelBuilder.Entity("ECommerce.Backend.Models.User", b =>
-                {
-                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }
