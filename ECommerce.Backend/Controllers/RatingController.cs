@@ -29,9 +29,7 @@ namespace ECommerce.Backend.Controllers
         {
             return await _context.Ratings
                 .Select(x => new RatingVm { 
-                    RatingId = x.RatingId,
-                    ProductId = x.ProductId,
-                    UserId = x.UserId,
+                    RatingId = x.RatingId, 
                     RatingValue = x.RatingValue,
                     RatingBody = x.RatingBody,
                     RatingTime = x.RatingTime
@@ -53,8 +51,6 @@ namespace ECommerce.Backend.Controllers
             var ratingVm = new RatingVm
             {
                 RatingId = rating.RatingId,
-                ProductId = rating.ProductId,
-                UserId = rating.UserId,
                 RatingValue = rating.RatingValue,
                 RatingBody = rating.RatingBody,
                 RatingTime = rating.RatingTime
@@ -74,6 +70,7 @@ namespace ECommerce.Backend.Controllers
             }
 
             rating.RatingValue = ratingCreateRequest.RatingValue;
+            rating.RatingBody = ratingCreateRequest.RatingBody;
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -84,8 +81,6 @@ namespace ECommerce.Backend.Controllers
         {
             var rating = new Rating
             {
-                ProductId = ratingCreateRequest.ProductId,
-                UserId = ratingCreateRequest.UserId,
                 RatingValue = ratingCreateRequest.RatingValue,
                 RatingBody = ratingCreateRequest.RatingBody,
                 RatingTime = ratingCreateRequest.RatingTime
@@ -95,9 +90,7 @@ namespace ECommerce.Backend.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetRating", new { id = rating.RatingId }, new RatingVm { 
-                RatingId = rating.RatingId,
-                ProductId = rating.ProductId,
-                UserId = rating.UserId,
+                RatingId = rating.RatingId, 
                 RatingValue = rating.RatingValue,
                 RatingBody = rating.RatingBody,
                 RatingTime = rating.RatingTime

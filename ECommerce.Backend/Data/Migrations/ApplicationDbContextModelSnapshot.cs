@@ -149,7 +149,7 @@ namespace ECommerce.Backend.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<string>("RatingBody")
@@ -161,19 +161,16 @@ namespace ECommerce.Backend.Data.Migrations
                     b.Property<float>("RatingValue")
                         .HasColumnType("real");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("RatingId");
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
-                    b.ToTable("Ratings");
+                    b.ToTable("Rating");
                 });
 
             modelBuilder.Entity("ECommerce.Backend.Models.User", b =>
@@ -430,13 +427,11 @@ namespace ECommerce.Backend.Data.Migrations
                 {
                     b.HasOne("ECommerce.Backend.Models.Product", "Product")
                         .WithMany("Ratings")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductId");
 
                     b.HasOne("ECommerce.Backend.Models.User", "User")
                         .WithMany("Ratings")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Product");
 
