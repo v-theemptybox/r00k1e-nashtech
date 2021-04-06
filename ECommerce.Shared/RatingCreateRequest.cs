@@ -8,6 +8,8 @@ namespace ECommerce.Shared
 {
     public class RatingCreateRequest
     {
+        public int ProductId { get; set; }
+        public int UserId { get; set; }
         public float RatingValue { get; set; }
         public string RatingBody { get; set; }
         public DateTime RatingTime { get; set; }
