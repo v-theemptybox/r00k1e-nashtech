@@ -1,48 +1,37 @@
-﻿using ECommerce.Backend.Data;
-using ECommerce.Backend.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using ECommerce.Shared;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using ECommerce.Backend.Data;
+using ECommerce.Backend.Models;
+using ECommerce.Backend.Services;
+using ECommerce.Shared;
 
 namespace ECommerce.Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [Authorize("Bearer")]
-    public class ProductController : Controller
+    public class ProductsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IStorageService _storageService;
+        private readonly ILogger _logger;
+        private static readonly ActivitySource DemoSource = new ActivitySource("OTel.Demo");
 
-        public ProductController(ApplicationDbContext context)
+        public ProductsController(ApplicationDbContext context, IStorageService storageService, ILogger<ProductsController> logger)
         {
             _context = context;
-        }
-
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<ProductVm>>> GetProducts()
-        {
-            return await _context.Products
-                .Select(x => new ProductVm { 
-                    ProductId = x.ProductId, 
-                    ProductName = x.ProductName,
-                    CategoryId = x.CategoryId,
-                    Description = x.Description,
-                    Price = x.Price,
-                    Images = x.Images,
-                    CreatedDate = x.CreatedDate,
-                    UpdatedDate = x.UpdatedDate,
-                    BrandId = x.BrandId,
-                    UnitsInStock = x.UnitsInStock,
-                    UnitsOnOrder = x.UnitsOnOrder
-
-                })
-                .ToListAsync();
+            _storageService = storageService;
+            _logger = logger;
         }
 
         [HttpGet("{id}")]
@@ -50,7 +39,6 @@ namespace ECommerce.Backend.Controllers
         public async Task<ActionResult<ProductVm>> GetProduct(int id)
         {
             var product = await _context.Products.FindAsync(id);
-
             if (product == null)
             {
                 return NotFound();
@@ -71,27 +59,60 @@ namespace ECommerce.Backend.Controllers
                 UnitsOnOrder = product.UnitsOnOrder
             };
 
+            productVm.Images = _storageService.GetFileUrl(product.Images);
+            _logger.LogInformation("get product");
+
             return productVm;
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, ProductCreateRequest productCreateRequest)
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<ActionResult<IEnumerable<ProductVm>>> GetProduct()
         {
-            var product = await _context.Products.FindAsync(id);
+            var products = await _context.Products.Select(x =>
+                new
+                {
+                    x.ProductId,
+                    x.ProductName,
+                    x.CategoryId,
+                    x.Description,
+                    x.Price,
+                    x.Images,
+                    x.CreatedDate,
+                    x.UpdatedDate,
+                    x.BrandId,
+                    x.UnitsInStock,
+                    x.UnitsOnOrder
 
-            if (product == null)
+                }).ToListAsync();
+
+            var productVms = products.Select(x =>
+                new ProductVm
+                {
+                    ProductId = x.ProductId,
+                    ProductName = x.ProductName,
+                    CategoryId = x.CategoryId,
+                    Description = x.Description,
+                    Price = x.Price,
+                    Images = _storageService.GetFileUrl(x.Images),
+                    CreatedDate = x.CreatedDate,
+                    UpdatedDate = x.UpdatedDate,
+                    BrandId = x.BrandId,
+                    UnitsInStock = x.UnitsInStock,
+                    UnitsOnOrder = x.UnitsOnOrder
+                }).ToList();
+
+            _logger.LogInformation("get products");
+            using (var activity = DemoSource.StartActivity("This is sample activity"))
             {
-                return NotFound();
+                _logger.LogInformation("Hello, World!aaaaaaaaaaa");
             }
 
-            product.ProductName = productCreateRequest.ProductName;
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return productVms;
         }
 
         [HttpPost]
-        public async Task<ActionResult<ProductVm>> PostProduct(ProductCreateRequest productCreateRequest)
+        public async Task<IActionResult> PostProduct([FromForm] ProductCreateRequest productCreateRequest)
         {
             var product = new Product
             {
@@ -99,46 +120,35 @@ namespace ECommerce.Backend.Controllers
                 CategoryId = productCreateRequest.CategoryId,
                 Description = productCreateRequest.Description,
                 Price = productCreateRequest.Price,
-                Images = productCreateRequest.Images,
                 CreatedDate = productCreateRequest.CreatedDate,
-                UpdatedDate = productCreateRequest.UpdatedDate,
+                UpdatedDate = productCreateRequest.CreatedDate,
                 BrandId = productCreateRequest.BrandId,
                 UnitsInStock = productCreateRequest.UnitsInStock,
                 UnitsOnOrder = productCreateRequest.UnitsOnOrder
-
             };
+
+            if (productCreateRequest.Images != null)
+            {
+                product.Images = await SaveFile(productCreateRequest.Images);
+            }
 
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProduct", new { id = product.ProductId }, new ProductVm { 
-                ProductId = product.ProductId,
-                ProductName = product.ProductName,
-                CategoryId = product.CategoryId,
-                Description = product.Description,
-                Price = product.Price,
-                Images = product.Images,
-                CreatedDate = product.CreatedDate,
-                UpdatedDate = product.UpdatedDate,
-                BrandId = product.BrandId,
-                UnitsInStock = product.UnitsInStock,
-                UnitsOnOrder = product.UnitsOnOrder
-            });
+            return CreatedAtAction(nameof(GetProduct), new { id = product.ProductId }, null);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct(int id)
+        private Task<string> SaveFile(string images)
         {
-            var product = await _context.Products.FindAsync(id);
-            if (product == null)
-            {
-                return NotFound();
-            }
+            throw new NotImplementedException();
+        }
 
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+        private async Task<string> SaveFile(IFormFile file)
+        {
+            var originalFileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+            var fileName = $"{Guid.NewGuid()}{Path.GetExtension(originalFileName)}";
+            await _storageService.SaveFileAsync(file.OpenReadStream(), fileName);
+            return fileName;
         }
     }
 }

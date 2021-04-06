@@ -1,6 +1,7 @@
 using ECommerce.Backend.Data;
 using ECommerce.Backend.IdentityServer;
 using ECommerce.Backend.Models;
+using ECommerce.Backend.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -96,6 +97,7 @@ namespace ECommerce.Backend
                     policy.RequireAuthenticatedUser();
                 });
             });
+            services.AddTransient<IStorageService, FileStorageService>();
 
             services.AddControllersWithViews();
         }
