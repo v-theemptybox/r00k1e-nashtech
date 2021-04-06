@@ -19,6 +19,7 @@ namespace ECommerce.Backend.Data
         public DbSet<Category> Categories { get; set; }
         //public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
