@@ -1,0 +1,8 @@
+﻿@model IList<ECommerce.Shared.CategoryVm>
+
+<ul class="navbar-nav" style="margin: 0 auto">
+    @foreach (var cat in Model)
+    {
+        <li class="nav-item"><a class="nav-link" href="/categories/@cat.CategoryId">@cat.CategoryName</a></li>
+    }
+</ul>

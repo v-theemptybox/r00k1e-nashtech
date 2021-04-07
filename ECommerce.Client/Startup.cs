@@ -1,3 +1,5 @@
+using ECommerce.Client.Services.APIs;
+using ECommerce.Client.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -53,6 +55,9 @@ namespace ECommerce.Client
                 };
             });
 
+            services.AddHttpClient();
+            services.AddTransient<IProductAPI, ProductAPI>();
+            services.AddTransient<ICategoryAPI, CategoryAPI>();
             services.AddControllersWithViews();
         }
 

@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Client.Components
 {
-    public class CategoriViewComponent : ViewComponent
+    public class CategoryViewComponent : ViewComponent
     {
         private readonly ICategoryAPI _categoryApiClient;
 
-        public CategoriViewComponent(ICategoryAPI categoryApiClient)
+        public CategoryViewComponent(ICategoryAPI categoryApiClient)
         {
             _categoryApiClient = categoryApiClient;
         }

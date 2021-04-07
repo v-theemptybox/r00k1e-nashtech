@@ -14,11 +14,11 @@ namespace ECommerce.Backend.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize("Bearer")]
-    public class RatingController : Controller
+    public class RatingsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public RatingController(ApplicationDbContext context)
+        public RatingsController(ApplicationDbContext context)
         {
             _context = context;
         }
