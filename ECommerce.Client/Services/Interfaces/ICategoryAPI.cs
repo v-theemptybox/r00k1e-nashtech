@@ -9,5 +9,6 @@ namespace ECommerce.Client.Services.Interfaces
     public interface ICategoryAPI
     {
         Task<IList<CategoryVm>> GetCategories();
+        Task<CategoryVm> GetCategory(int id);
     }
 }

@@ -150,5 +150,77 @@ namespace ECommerce.Backend.Controllers
             await _storageService.SaveFileAsync(file.OpenReadStream(), fileName);
             return fileName;
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutProduct(int id, ProductCreateRequest productCreateRequest)
+        {
+            var product = await _context.Products.FindAsync(id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            product.ProductName = productCreateRequest.ProductName;
+            product.CategoryId = productCreateRequest.CategoryId;
+            product.Description = productCreateRequest.Description;
+            product.Price = productCreateRequest.Price;
+            product.CreatedDate = productCreateRequest.CreatedDate;
+            product.UpdatedDate = productCreateRequest.CreatedDate;
+            product.BrandId = productCreateRequest.BrandId;
+            product.UnitsInStock = productCreateRequest.UnitsInStock;
+            product.UnitsOnOrder = productCreateRequest.UnitsOnOrder;
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        [HttpGet("GetByCategory/{idCate}")]
+        [AllowAnonymous]
+        public async Task<ActionResult<IEnumerable<ProductVm>>> GetProductByCategory(int idCate)
+        {
+            var productList = await _context.Products
+                .Where(p => p.CategoryId == idCate)
+                .ToListAsync();
+
+            List<ProductVm> productVmList = new List<ProductVm>();
+
+            foreach (var x in productList)
+            {
+                ProductVm get = new ProductVm();
+                get.ProductId = x.ProductId;
+                get.ProductName = x.ProductName;
+                get.Description = x.Description;
+                get.Price = x.Price;
+                get.CreatedDate = x.CreatedDate;
+                get.UpdatedDate = x.UpdatedDate;
+                get.BrandId = x.BrandId;
+                get.UnitsInStock = x.UnitsInStock;
+                get.UnitsOnOrder = x.UnitsOnOrder;
+                get.Images = _storageService.GetFileUrl(x.Images);
+                //for (int i = 0; i < x.ImageFiles.Count; i++)
+                //{
+                //    get.ImageLocation.Add(x.ImageFiles.ElementAt(i).ImageLocation);
+                //}
+                productVmList.Add(get);
+            }
+            return productVmList;
+        }
     }
 }

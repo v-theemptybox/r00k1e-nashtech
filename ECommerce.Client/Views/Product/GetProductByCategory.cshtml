@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IList<ECommerce.Shared.ProductVm>
+
+@await Component.InvokeAsync("Category")
+
+<div class="container">
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-3">
+                <div class="card mb-4 text-center" style="width: 16rem; height: 25rem">
+                    <img class="card-img-top" src="@product.Images" alt="Card image caption" height=200/>
+                    <div class="card-body">
+                        <h6 class="card-title">@product.ProductName</h6>
+                        <p class="card-text" style="color:red">$@product.Price</p>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary" asp-controller="Product" asp-action="Detail" asp-route-id="@product.ProductId">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

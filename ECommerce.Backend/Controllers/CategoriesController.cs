@@ -68,6 +68,7 @@ namespace ECommerce.Backend.Controllers
             }
 
             category.CategoryName = categoryCreateRequest.CategoryName;
+            category.Description = categoryCreateRequest.Description;
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -88,7 +89,9 @@ namespace ECommerce.Backend.Controllers
 
             return CreatedAtAction("GetCategory", new { id = category.CategoryId }, new CategoryVm {
                 CategoryId = category.CategoryId, 
-                CategoryName = category.CategoryName });
+                CategoryName = category.CategoryName,
+                Description = category.Description
+            });
         }
 
         [HttpDelete("{id}")]

@@ -30,14 +30,14 @@ namespace ECommerce.Client.Controllers
         {
             var products = await _productAPI.GetProducts();
             //Set url backend for image
-            //foreach (var x in products)
-            //{
-            //    for (int i = 0; i < x.Images.Count(); i++)
-            //    {
-            //        string setUrl = _configuration["BackendUrl:Default"] + x.Images[i];
-            //        x.Images[i] = setUrl;
-            //    }
-            //}
+            foreach (var x in products)
+            {
+                //for (int i = 0; i < x.Images.Count(); i++)
+                //{
+                    x.Images = _configuration["BackendUrl:Default"] + x.Images;
+                //    x.Images[i] = setUrl;
+                //}
+            }
             return View(products);
         }
 

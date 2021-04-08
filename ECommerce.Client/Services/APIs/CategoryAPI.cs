@@ -22,9 +22,16 @@ namespace ECommerce.Client.Services.APIs
         public async Task<IList<CategoryVm>> GetCategories()
         {
             var client = _client.CreateClient();
-            var response = await client.GetAsync(_configuration["BackendUrl:Default"] + "/api/categories");
+            var response = await client.GetAsync(_configuration["BackendUrl:Default"] + "/api/categories/");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<IList<CategoryVm>>();
+        }
+        public async Task<CategoryVm> GetCategory(int id)
+        {
+            var client = _client.CreateClient();
+            var response = await client.GetAsync(_configuration["BackendUrl:Default"] + "/api/categories/" + id);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<CategoryVm>();
         }
     }
 }
