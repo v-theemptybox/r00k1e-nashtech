@@ -1,0 +1,39 @@
+﻿.card-img-top{
+    height: 262px;
+    width: 189px;
+}
+.title-block{
+    display:flex;
+    justify-content:space-between;
+    font-size:17px;
+    font-weight:bold;
+
+}
+.card-title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.card-item{
+    justify-content:center;
+    position:relative;
+}
+.card-brand {
+    position: absolute;
+    right: 10px;
+    border: 1px solid white;
+}
+.card-price{
+    position:absolute;
+    bottom:10px;
+    right:10px;
+    border: 1px solid white;
+    background-color: coral;
+    border-radius: 5px;
+}
+.card-img {
+    transition: transform .2s;
+}
+.card-img:hover {
+    transform: scale(1.1);
+}
