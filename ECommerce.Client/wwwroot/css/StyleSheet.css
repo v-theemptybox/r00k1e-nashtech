@@ -9,8 +9,117 @@
 li a:hover{
     background:linear-gradient(white,#444);
 }
-/*.sublink {
-    border-right: 1px solid hsla(0,0%,100%,.2);
-    margin-right: 10px;
-    padding-right: 10px;
-}*/
+
+.bg-body {
+    /*background: url(~/imgs/abstract-neon-light-gaming-bg.jpg);*/
+    background-image: linear-gradient(#280b1e 76px,silver,white,silver,#280b1e);
+}
+
+.custom-btn {
+    background-color: #ffffff;
+    display: flex;
+    height: 100px;
+    position: relative;
+    border-radius: 6px;
+    transition: 0.3s ease-in-out;
+}
+    .custom-btn:hover .left-side {
+        width: 100%;
+        background: red;
+    }
+.left-side {
+    width: 100px;
+    border-radius: 4px 0 0 4px;
+    border-right: 1px dashed silver;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    flex-shrink: 0;
+    overflow: hidden;
+    background:red;
+}
+
+
+.right-side {
+    width: calc(100%);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+    justify-content: center;
+    background-color: #ff5400;
+    border-radius:0 4px 4px 0;
+}
+    
+
+.detail-info {
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+    .detail-info:before {
+        content: '';
+        background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(5px);
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        animation: glowing 20s linear infinite;
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+        border-radius: 10px;
+    }
+
+    .detail-info:active {
+        color: #000
+    }
+
+        .detail-info:active:after {
+            background: transparent;
+        }
+
+    .detail-info:hover:before {
+        opacity: 1;
+    }
+
+    .detail-info:after {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #111;
+        left: 0;
+        top: 0;
+        border-radius: 10px;
+    }
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}

@@ -1,17 +1,38 @@
 ﻿@model ECommerce.Shared.ProductVm
 
+@await Component.InvokeAsync("Category")
+
+<head>
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
+</head>
+
 <div class="container">
-    <div class="row">
-        <div class="col-sm-5">
-            <img src="@Model.Images" alt="Card image cap">
+    <div class="row detail-info">
+        <div class="col-sm-6" style="text-align:center">
+            <img src="@Model.Images" alt="Card image cap" >
         </div>
 
-        <div class="col-sm-5">
-            <h4>@Model.ProductName</h4>
-            <hr style="width:100%;text-align:left;margin-left:0">
-            <p>@Model.Description</p>
-            <h5 style="color:red">Price: @Model.Price</h5>
-            <button type="button" class="btn btn-danger">Order</button>
+        <div class="col-sm-6" style="text-align:center; border-left: 2px inset silver">
+            <div class="shadow" style="border-radius:8px;">
+                <div class="bg-dark" style="border-radius:8px 8px 0 0;">
+                    <h4 style="color:white">@Model.ProductName</h4>
+                    
+                </div>
+                <h5>@Model.BrandId</h5>
+                <h5>@Model.UnitsInStock piece available</h5>
+                <div class="buy-loc" style="font-size:23px; text-align:center; border-radius:0 0 8px 8px;">
+                    <div class="custom-btn">
+                        <div class="left-side">Buy Now</div>
+                        <div class="right-side">@Model.Price$</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="tab" style="text-align:center;">
+                <button>Information</button>
+                <button>Rating</button>
+            </div>
         </div>
     </div>
 </div>
