@@ -51,7 +51,7 @@ namespace ECommerce.Backend.Controllers
                 CategoryId = product.CategoryId,
                 Description = product.Description,
                 Price = product.Price,
-                Images = product.Images,
+                Images = _storageService.GetFileUrl(product.Images),
                 CreatedDate = product.CreatedDate,
                 UpdatedDate = product.UpdatedDate,
                 BrandId = product.BrandId,
@@ -59,7 +59,7 @@ namespace ECommerce.Backend.Controllers
                 UnitsOnOrder = product.UnitsOnOrder
             };
 
-            productVm.Images = _storageService.GetFileUrl(product.Images);
+            //productVm.Images = _storageService.GetFileUrl(product.Images);
             _logger.LogInformation("get product");
 
             return productVm;
@@ -67,7 +67,7 @@ namespace ECommerce.Backend.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<ProductVm>>> GetProduct()
+        public async Task<ActionResult<IEnumerable<ProductVm>>> GetProducts()
         {
             var products = await _context.Products.Select(x =>
                 new

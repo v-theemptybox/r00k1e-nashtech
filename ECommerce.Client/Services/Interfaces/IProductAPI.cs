@@ -7,7 +7,7 @@ namespace ECommerce.Client.Services.Interfaces
     public interface IProductAPI
     {
         Task<IList<ProductVm>> GetProducts();
-        Task<IList<ProductVm>> GetProduct(int id);
+        Task<ProductVm> GetProduct(int id);
         Task<IList<ProductVm>> GetProductByCategory(int idCate);
 
     }

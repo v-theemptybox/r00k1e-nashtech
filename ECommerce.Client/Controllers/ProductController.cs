@@ -52,14 +52,14 @@ namespace ECommerce.Client.Controllers
         {
             var product = await _productApiClient.GetProduct(id);
 
-            foreach (var x in product)
-            {
-                //for (int i = 0; i < x.ImageLocation.Count; i++)
-                //{
-                x.Images = _configuration["BackendUrl:Default"] + x.Images;
-                //    x.ImageLocation[i] = setUrl;
-                //}
-            }
+            //foreach (var x in product)
+            //{
+            //    //for (int i = 0; i < x.ImageLocation.Count; i++)
+            //    //{
+                product.Images = _configuration["BackendUrl:Default"] + product.Images;
+            //    //    x.ImageLocation[i] = setUrl;
+            //    //}
+            //}
             return View(product);
         }
     }

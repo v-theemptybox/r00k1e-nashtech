@@ -6,9 +6,9 @@
 <ul class="menu01" >
     @foreach (var cat in Model)
     {
-    <li style="float:left !important;">
+    <li class="link-list"style="float:left !important;">
         @*<a class="nav-link" style="text-align:center;" href="/categories/@cat.CategoryId">@cat.CategoryName</a>*@
-        <a class="nav-link active" style="font-size:20px; " asp-controller="Product" asp-action="GetProductByCategory" asp-route-idCate="@cat.CategoryId">@cat.CategoryName</a>
+        <a class="navb-link" style="display: block; color: white; text-align: center; padding: 14px 10px; text-decoration: none;" asp-controller="Product" asp-action="GetProductByCategory" asp-route-idCate="@cat.CategoryId">@cat.CategoryName</a>
     </li>
     }
     

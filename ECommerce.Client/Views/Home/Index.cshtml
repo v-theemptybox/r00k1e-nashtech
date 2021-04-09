@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="~/css/IndexStyle.css" />
 </head>
 
-<div class="container">
+<div class="container main-bg">
+    <img src="~/imgs/abstract-neon-light-gaming-bg.jpg" style="width:100%" height="200px"/>
     <div class="title-block">
         <p>Trending Games</p>
         <a>View all</a>
@@ -18,26 +19,16 @@
     <div class="row">
         @foreach (var product in Model)
         {
-            <div class="col-3">
-                @*<div class="card mb-5 text-center" >
-                    <img class="card-img-top" src="@product.Images" alt="Card image cap">
-                    <div class="card-body">
-                        <h6 class="card-title">@product.ProductName</h6>
-                        <p class="card-text" style="color:red">$@product.Price</p>
-                    </div>
-                    <div class="card-footer">
-                        <a class="btn btn-primary" asp-controller="Product" asp-action="Detail" asp-route-id="@product.ProductId">Xem chi tiết</a>
-                    </div>
-                </div>*@
-                <div class="card-item">
+            <div class="col-3 item">
+                <a class="cover-img" asp-controller="Product" asp-action="Detail" asp-route-id="@product.ProductId">
                     <p class="card-brand">@product.BrandId</p>
-                    <p class="card-price">@product.Price</p>
-                    <a class="cover-img" asp-controller="Product" asp-action="Detail" asp-route-id="@product.ProductId">
-                        <img class="card-img" src="@product.Images" alt="Caption" />
-                    </a>
-                </div>
-                <p>@product.ProductName</p>
-                
+                    <img class="card-img" src="@product.Images" alt="Caption" />
+                    <p class="card-price">@product.Price$</p>
+                </a>
+                <br />
+                <br />
+                <p class="card-title">@product.ProductName</p>
+
             </div>
         }
     </div>

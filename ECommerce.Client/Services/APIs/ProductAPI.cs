@@ -27,12 +27,12 @@ namespace ECommerce.Client.Services.APIs
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<IList<ProductVm>>();
         }
-        public async Task<IList<ProductVm>> GetProduct(int id)
+        public async Task<ProductVm> GetProduct(int id)
         {
             var client = _client.CreateClient();
-            var response = await client.GetAsync(_configuration["BackendUrl:Default"] + "/api/product" + id);
+            var response = await client.GetAsync(_configuration["BackendUrl:Default"] + "/api/products/" + id);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadFromJsonAsync<IList<ProductVm>>();
+            return await response.Content.ReadFromJsonAsync<ProductVm>();
         }
 
         public async Task<IList<ProductVm>> GetProductByCategory(int idCate)

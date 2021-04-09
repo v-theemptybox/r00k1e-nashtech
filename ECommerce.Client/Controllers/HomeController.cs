@@ -1,7 +1,5 @@
 ﻿using ECommerce.Client.Models;
 using ECommerce.Client.Services.Interfaces;
-using ECommerce.Client.Models;
-using ECommerce.Client.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
