@@ -4,16 +4,14 @@ using ECommerce.Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace ECommerce.Backend.Data.Migrations
+namespace ECommerce.Backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210405031843_UpdateDB01")]
-    partial class UpdateDB01
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,45 +50,6 @@ namespace ECommerce.Backend.Data.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("ECommerce.Backend.Models.Order", b =>
-                {
-                    b.Property<int>("OrderId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("OrderId");
-
-                    b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("ECommerce.Backend.Models.OrderDetail", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductId", "OrderId");
-
-                    b.HasIndex("OrderId");
-
-                    b.ToTable("OrderDetail");
                 });
 
             modelBuilder.Entity("ECommerce.Backend.Models.Product", b =>
@@ -137,6 +96,37 @@ namespace ECommerce.Backend.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("ECommerce.Backend.Models.Rating", b =>
+                {
+                    b.Property<int>("RatingId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RatingBody")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RatingTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<float>("RatingValue")
+                        .HasColumnType("real");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("RatingId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Ratings");
                 });
 
             modelBuilder.Entity("ECommerce.Backend.Models.User", b =>
@@ -342,25 +332,6 @@ namespace ECommerce.Backend.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("ECommerce.Backend.Models.OrderDetail", b =>
-                {
-                    b.HasOne("ECommerce.Backend.Models.Order", "Order")
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ECommerce.Backend.Models.Product", "Product")
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("ECommerce.Backend.Models.Product", b =>
                 {
                     b.HasOne("ECommerce.Backend.Models.Brand", "Brand")
@@ -378,6 +349,21 @@ namespace ECommerce.Backend.Data.Migrations
                     b.Navigation("Brand");
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("ECommerce.Backend.Models.Rating", b =>
+                {
+                    b.HasOne("ECommerce.Backend.Models.Product", "Product")
+                        .WithMany("Ratings")
+                        .HasForeignKey("ProductId");
+
+                    b.HasOne("ECommerce.Backend.Models.User", "User")
+                        .WithMany("Ratings")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -441,14 +427,14 @@ namespace ECommerce.Backend.Data.Migrations
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("ECommerce.Backend.Models.Order", b =>
-                {
-                    b.Navigation("OrderDetails");
-                });
-
             modelBuilder.Entity("ECommerce.Backend.Models.Product", b =>
                 {
-                    b.Navigation("OrderDetails");
+                    b.Navigation("Ratings");
+                });
+
+            modelBuilder.Entity("ECommerce.Backend.Models.User", b =>
+                {
+                    b.Navigation("Ratings");
                 });
 #pragma warning restore 612, 618
         }

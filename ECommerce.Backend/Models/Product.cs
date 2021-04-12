@@ -22,7 +22,6 @@ namespace ECommerce.Backend.Models
 
         public Brand Brand { get; set; }
         public Category Category { get; set; }
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual ICollection<Rating> Ratings { get; set; }
 
     }

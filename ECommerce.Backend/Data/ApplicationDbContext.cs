@@ -18,25 +18,11 @@ namespace ECommerce.Backend.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         //public DbSet<OrderDetail> OrderDetails { get; set; }
-        public DbSet<Order> Orders { get; set; }
         public DbSet<Rating> Ratings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<OrderDetail>()
-                .HasKey(od => new { od.ProductId, od.OrderId });
-
-            modelBuilder.Entity<OrderDetail>()
-                .HasOne<Product>(od => od.Product)
-                .WithMany(p => p.OrderDetails)
-                .HasForeignKey(od => od.ProductId);
-
-            modelBuilder.Entity<OrderDetail>()
-                .HasOne<Order>(od => od.Order)
-                .WithMany(o => o.OrderDetails)
-                .HasForeignKey(od => od.OrderId);
 
             modelBuilder.Entity<User>()
                 .ToTable("AspNetUsers");
