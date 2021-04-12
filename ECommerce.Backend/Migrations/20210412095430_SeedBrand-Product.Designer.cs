@@ -4,14 +4,16 @@ using ECommerce.Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ECommerce.Backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210412095430_SeedBrand-Product")]
+    partial class SeedBrandProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,7 +59,7 @@ namespace ECommerce.Backend.Migrations
                         new
                         {
                             Id = 5,
-                            Name = "Microsoft"
+                            Name = "Xbox"
                         });
                 });
 
@@ -156,210 +158,14 @@ namespace ECommerce.Backend.Migrations
                             ProductId = 1,
                             BrandId = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 932, DateTimeKind.Local).AddTicks(4124),
+                            CreatedDate = new DateTime(2021, 4, 12, 16, 54, 29, 862, DateTimeKind.Local).AddTicks(5383),
                             Description = "Join the Phantom Thieves and strike back against the corruption overtaking cities across Japan. A summer vacation with close friends takes a sudden turn as a distorted reality emerges; reveal the truth and redeem the hearts of those imprisoned at the center of the crisis! Jump into the stylish world of Persona in an all-new story Dynamically control your team during explosive action combat Battle across Japan in an epic road trip Key Features Include: /nExperience the world of Persona 5 Strikers on PC in Full HD, supports up to 4K /nSteam Achievements and Trading Cards /nChoose between Japanese and English VO /nFull keyboard and mouse adaptation",
-                            Images = "persona-5-scramble-strikers-switch.jpg",
+                            Images = "/user-content/persona-5-scramble-strikers-switch.jpg",
                             Price = 59.99m,
                             ProductName = "Persona 5 - Scramble Striker",
                             UnitsInStock = 10,
                             UnitsOnOrder = 0,
-                            UpdatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 934, DateTimeKind.Local).AddTicks(7867)
-                        },
-                        new
-                        {
-                            ProductId = 2,
-                            BrandId = 1,
-                            CategoryId = 1,
-                            CreatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2339),
-                            Description = "Florence is a heartfelt experience that lasts around 30 minutes. It's short, but deeply meaningful. At 25, Florence Yeoh feels a little stuck. Her life is an endless routine of work, sleep, and spending too much time on social media. Then one day, she meets a cello player named Krish who changes everything about how she sees the world. Experience every beat of Florence and Krish’s relationship through a series of bespoke gameplay vignettes – from flirting to fighting, from helping each other grow to growing apart. Drawing inspiration from ‘slice of life’ graphic novels and webcomics, Florence is intimate, raw and personal. Original soundtrack included.",
-                            Images = "florence-switch-cover.jpg",
-                            Price = 4.99m,
-                            ProductName = "Florence",
-                            UnitsInStock = 10,
-                            UnitsOnOrder = 0,
-                            UpdatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2361)
-                        },
-                        new
-                        {
-                            ProductId = 3,
-                            BrandId = 1,
-                            CategoryId = 1,
-                            CreatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2372),
-                            Description = "The game follows Jill Valentine as she attempts to escape a zombie outbreak while hunted by an intelligent bioweapon known as Nemesis-T Type. The game comes bundled with Resident Evil: Resistance, an online asymmetrical game. ",
-                            Images = "resident-evil-3-switch-cover.jpg",
-                            Price = 59.99m,
-                            ProductName = "Resident Evil 3 Remake",
-                            UnitsInStock = 10,
-                            UnitsOnOrder = 0,
-                            UpdatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2374)
-                        },
-                        new
-                        {
-                            ProductId = 4,
-                            BrandId = 2,
-                            CategoryId = 2,
-                            CreatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2379),
-                            Description = "Grand Theft Auto V for PC offers players the option to explore the award-winning world of Los Santos and Blaine County in resolutions of up to 4k and beyond, as well as the chance to experience the game running at 60 frames per second. ",
-                            Images = "grand-theft-auto-v-cover.jpg",
-                            Price = 34.99m,
-                            ProductName = "Grand Theft Auto V",
-                            UnitsInStock = 10,
-                            UnitsOnOrder = 0,
-                            UpdatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2381)
-                        },
-                        new
-                        {
-                            ProductId = 5,
-                            BrandId = 3,
-                            CategoryId = 2,
-                            CreatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2385),
-                            Description = "Embark on the craziest journey of your life in It Takes Two. Invite a friend to join for free with Friend’s Pass and work together across a huge variety of gleefully disruptive gameplay challenges. ",
-                            Images = "it-takes-two-english-only-cover.jpg",
-                            Price = 34.99m,
-                            ProductName = "It Takes Two",
-                            UnitsInStock = 10,
-                            UnitsOnOrder = 0,
-                            UpdatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2387)
-                        },
-                        new
-                        {
-                            ProductId = 6,
-                            BrandId = 2,
-                            CategoryId = 2,
-                            CreatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2391),
-                            Description = "Ushering in a new era for the METAL GEAR franchise with cutting-edge technology powered by the Fox Engine, METAL GEAR SOLID V: The Phantom Pain, will provide players a first-rate gaming experience as they are offered tactical freedom to carry out open-world missions. ",
-                            Images = "metal-gear-solid-v-the-phantom-pain.jpg",
-                            Price = 29.99m,
-                            ProductName = "Metal Gear Solid V - The Phantom Pain",
-                            UnitsInStock = 10,
-                            UnitsOnOrder = 0,
-                            UpdatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2393)
-                        },
-                        new
-                        {
-                            ProductId = 7,
-                            BrandId = 2,
-                            CategoryId = 2,
-                            CreatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2398),
-                            Description = "Outriders’ brutal and bloody combat combines frenetic gunplay, violent powers and deep RPG systems to create a true genre hybrid. ",
-                            Images = "outriders-cover.jpg",
-                            Price = 59.99m,
-                            ProductName = "Outriders",
-                            UnitsInStock = 10,
-                            UnitsOnOrder = 0,
-                            UpdatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2400)
-                        },
-                        new
-                        {
-                            ProductId = 8,
-                            BrandId = 2,
-                            CategoryId = 2,
-                            CreatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2404),
-                            Description = "Experience survival horror like never before in the 8th major installment in the Resident Evil franchise - Resident Evil Village. With detailed graphics, intense first-person action and masterful storytelling, the terror has never felt more realistic. ",
-                            Images = "resident-evil-village-deluxe-edition-cover.jpg",
-                            Price = 59.99m,
-                            ProductName = "Resident Evil Village",
-                            UnitsInStock = 10,
-                            UnitsOnOrder = 0,
-                            UpdatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2406)
-                        },
-                        new
-                        {
-                            ProductId = 9,
-                            BrandId = 3,
-                            CategoryId = 2,
-                            CreatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2412),
-                            Description = "As war rages on throughout the Northern Realms, you take on the greatest contract of your life — tracking down the Child of Prophecy, a living weapon that can alter the shape of the world.",
-                            Images = "the-witcher-3.jpg",
-                            Price = 19.99m,
-                            ProductName = "The Witcher 3",
-                            UnitsInStock = 10,
-                            UnitsOnOrder = 0,
-                            UpdatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2414)
-                        },
-                        new
-                        {
-                            ProductId = 10,
-                            BrandId = 4,
-                            CategoryId = 3,
-                            CreatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2418),
-                            Description = "The story of this first, standalone game in the FINAL FANTASY VII REMAKE project covers up to the party’s escape from Midgar, and goes deeper into the events occurring in Midgar than the original FINAL FANTASY VII.",
-                            Images = "final-fantasy-vii-remake-ps4-cover.jpg",
-                            Price = 59.99m,
-                            ProductName = "Final Fantasy VII Remake",
-                            UnitsInStock = 10,
-                            UnitsOnOrder = 0,
-                            UpdatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2420)
-                        },
-                        new
-                        {
-                            ProductId = 11,
-                            BrandId = 4,
-                            CategoryId = 3,
-                            CreatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2425),
-                            Description = "As war rages on throughout the Northern Realms, you take on the greatest contract of your life — tracking down the Child of Prophecy, a living weapon that can alter the shape of the world. ",
-                            Images = "god-of-war-4.jpg",
-                            Price = 49.99m,
-                            ProductName = "God Of War 4",
-                            UnitsInStock = 10,
-                            UnitsOnOrder = 0,
-                            UpdatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2427)
-                        },
-                        new
-                        {
-                            ProductId = 12,
-                            BrandId = 4,
-                            CategoryId = 3,
-                            CreatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2431),
-                            Description = "Battle hordes of yokai in this masocore Action RPG. Create your protagonist and embark on an adventure through a myriad of locales across Japan during the Sengoku period. Utilize the new Yokai Shift ability to defeat even the most ferocious yokai and be prepared to brave through Dark Realms created by your...",
-                            Images = "nioh-2-the-complete-edition-ps4-cover.jpg",
-                            Price = 49.99m,
-                            ProductName = "Nioh 2",
-                            UnitsInStock = 10,
-                            UnitsOnOrder = 0,
-                            UpdatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2433)
-                        },
-                        new
-                        {
-                            ProductId = 13,
-                            BrandId = 4,
-                            CategoryId = 3,
-                            CreatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2437),
-                            Description = "Release in 2022",
-                            Images = "dragon-quest-iii-remake-ps5.jpg",
-                            Price = 49.99m,
-                            ProductName = "Dragon Quest III Remake",
-                            UnitsInStock = 10,
-                            UnitsOnOrder = 0,
-                            UpdatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2440)
-                        },
-                        new
-                        {
-                            ProductId = 14,
-                            BrandId = 5,
-                            CategoryId = 4,
-                            CreatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2444),
-                            Description = "Release in 2022",
-                            Images = "assassin-2019s-creed-valhalla.jpg",
-                            Price = 49.99m,
-                            ProductName = "Assassin Creed Valhalla",
-                            UnitsInStock = 10,
-                            UnitsOnOrder = 0,
-                            UpdatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2446)
-                        },
-                        new
-                        {
-                            ProductId = 15,
-                            BrandId = 5,
-                            CategoryId = 4,
-                            CreatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2452),
-                            Description = "As war rages on throughout the Northern Realms, you take on the greatest contract of your life — tracking down the Child of Prophecy, a living weapon that can alter the shape of the world. ",
-                            Images = "the-witcher-3-xbox.jpg",
-                            Price = 19.99m,
-                            ProductName = "The Witcher 3",
-                            UnitsInStock = 10,
-                            UnitsOnOrder = 0,
-                            UpdatedDate = new DateTime(2021, 4, 12, 18, 2, 51, 935, DateTimeKind.Local).AddTicks(2454)
+                            UpdatedDate = new DateTime(2021, 4, 12, 16, 54, 29, 865, DateTimeKind.Local).AddTicks(4679)
                         });
                 });
 

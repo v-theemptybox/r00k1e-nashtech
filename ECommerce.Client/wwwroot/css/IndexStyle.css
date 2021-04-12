@@ -1,22 +1,15 @@
 ﻿.item {
     display: inline-block;
-    margin: 0 10px 20px;
     position: relative;
     border-radius: 8px;
     vertical-align: top;
 }
 
 .main-bg {
-    /*background-image: linear-gradient(#280b1e,silver,white,silver,#280b1e);*/
     background-color: #444;
-    /*background: linear-gradient(to bottom, #280b1e 0px, transparent 150px), background: linear-gradient(to bottom, #280b1e 0px, transparent 150px), url(https://s3.gaming-cdn.com/images/products/4835/background/4835.jpg) center 0px no-repeat #280b1e;
-    center 0px no-repeat #280b1e;*/
     border-radius: 8px;
 }
-.bg-body {
-    /*background: url(~/imgs/abstract-neon-light-gaming-bg.jpg);*/
-    background-image: linear-gradient(#280b1e 76px,silver,white,silver,#280b1e);
-}
+
 
 .cover-img {
     position: relative;

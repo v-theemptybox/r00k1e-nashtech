@@ -69,3 +69,7 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+.bg-body {
+    /*background: url(~/imgs/abstract-neon-light-gaming-bg.jpg);*/
+    background-image: linear-gradient(#280b1e 76px,silver,white,silver,#280b1e);
+}
