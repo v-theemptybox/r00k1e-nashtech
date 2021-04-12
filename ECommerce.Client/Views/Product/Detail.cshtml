@@ -4,6 +4,7 @@
 
 <head>
     <link rel="stylesheet" href="~/css/StyleSheet.css" />
+    
 </head>
 
 <div class="container">
@@ -29,10 +30,42 @@
             </div>
         </div>
         <div class="col-sm-12">
-            <div class="tab" style="text-align:center;">
-                <button>Information</button>
-                <button>Rating</button>
+            <ul class="nav nav-tabs nav-justified">
+                <li class="nav-item">
+                    <a class="nav-link tablink" onclick="openPage('Information', this, 'gray')" id="defaultOpen">Information</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link tablink" onclick="openPage('Ratings', this, 'gray')">Ratings</a>
+                </li>
+            </ul>
+
+            <div id="Information" class="tabcontent">
+                <p>@Model.Description</p>
+            </div>
+
+            <div id="Ratings" class="tabcontent">
+                <h3>Rating</h3>
+                <p>rrrrrrrrrrrrrrr!</p>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function openPage(pageName, elmnt, color) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = "";
+        }
+        document.getElementById(pageName).style.display = "block";
+        elmnt.style.backgroundColor = color;
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>

@@ -1,13 +1,13 @@
 ﻿.menu01 {
     background-color: #280b1e;
     list-style-type: none;
-/*    padding: 15px;*/
+    /*    padding: 15px;*/
     margin: 0;
     overflow: hidden;
 }
 
-li a:hover{
-    background:linear-gradient(white,#444);
+li a:hover {
+    background: linear-gradient(white,#444);
 }
 
 
@@ -19,10 +19,12 @@ li a:hover{
     border-radius: 6px;
     transition: 0.3s ease-in-out;
 }
+
     .custom-btn:hover .left-side {
         width: 100%;
         background: red;
     }
+
 .left-side {
     width: 100px;
     border-radius: 4px 0 0 4px;
@@ -35,7 +37,7 @@ li a:hover{
     transition: 0.3s;
     flex-shrink: 0;
     overflow: hidden;
-    background:red;
+    background: red;
 }
 
 
@@ -50,9 +52,9 @@ li a:hover{
     transition: 0.3s;
     justify-content: center;
     background-color: #ff5400;
-    border-radius:0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
 }
-    
+
 
 .detail-info {
     border: none;
@@ -118,4 +120,22 @@ li a:hover{
     100% {
         background-position: 0 0;
     }
+}
+
+.tablink:hover {
+    background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+    color: white;
+    display: none;
+}
+
+#Information {
+    background-color: #2d2d2d;
+}
+
+#Ratings {
+    background-color: #2d2d2d;
 }
