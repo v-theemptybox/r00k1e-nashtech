@@ -55,8 +55,6 @@ namespace ECommerce.Backend.Controllers
                 CreatedDate = product.CreatedDate,
                 UpdatedDate = product.UpdatedDate,
                 BrandId = product.BrandId,
-                UnitsInStock = product.UnitsInStock,
-                UnitsOnOrder = product.UnitsOnOrder
             };
 
             //productVm.Images = _storageService.GetFileUrl(product.Images);
@@ -81,8 +79,6 @@ namespace ECommerce.Backend.Controllers
                     x.CreatedDate,
                     x.UpdatedDate,
                     x.BrandId,
-                    x.UnitsInStock,
-                    x.UnitsOnOrder
 
                 }).ToListAsync();
 
@@ -98,8 +94,7 @@ namespace ECommerce.Backend.Controllers
                     CreatedDate = x.CreatedDate,
                     UpdatedDate = x.UpdatedDate,
                     BrandId = x.BrandId,
-                    UnitsInStock = x.UnitsInStock,
-                    UnitsOnOrder = x.UnitsOnOrder
+
                 }).ToList();
 
             _logger.LogInformation("get products");
@@ -123,8 +118,6 @@ namespace ECommerce.Backend.Controllers
                 CreatedDate = productCreateRequest.CreatedDate,
                 UpdatedDate = productCreateRequest.CreatedDate,
                 BrandId = productCreateRequest.BrandId,
-                UnitsInStock = productCreateRequest.UnitsInStock,
-                UnitsOnOrder = productCreateRequest.UnitsOnOrder
             };
 
             if (productCreateRequest.Images != null)
@@ -168,8 +161,7 @@ namespace ECommerce.Backend.Controllers
             product.CreatedDate = productCreateRequest.CreatedDate;
             product.UpdatedDate = productCreateRequest.CreatedDate;
             product.BrandId = productCreateRequest.BrandId;
-            product.UnitsInStock = productCreateRequest.UnitsInStock;
-            product.UnitsOnOrder = productCreateRequest.UnitsOnOrder;
+
 
             await _context.SaveChangesAsync();
 
@@ -211,8 +203,6 @@ namespace ECommerce.Backend.Controllers
                 get.CreatedDate = x.CreatedDate;
                 get.UpdatedDate = x.UpdatedDate;
                 get.BrandId = x.BrandId;
-                get.UnitsInStock = x.UnitsInStock;
-                get.UnitsOnOrder = x.UnitsOnOrder;
                 get.Images = _storageService.GetFileUrl(x.Images);
                 //for (int i = 0; i < x.ImageFiles.Count; i++)
                 //{

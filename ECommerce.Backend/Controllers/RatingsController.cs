@@ -32,7 +32,8 @@ namespace ECommerce.Backend.Controllers
                     RatingId = x.RatingId, 
                     RatingValue = x.RatingValue,
                     RatingBody = x.RatingBody,
-                    RatingTime = x.RatingTime
+                    RatingTime = x.RatingTime,
+
                 })
                 .ToListAsync();
         }
@@ -71,6 +72,9 @@ namespace ECommerce.Backend.Controllers
 
             rating.RatingValue = ratingCreateRequest.RatingValue;
             rating.RatingBody = ratingCreateRequest.RatingBody;
+            rating.RatingTime = ratingCreateRequest.RatingTime;
+            rating.UserId = ratingCreateRequest.UserId;
+            rating.ProductId = ratingCreateRequest.ProductId;
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -83,7 +87,9 @@ namespace ECommerce.Backend.Controllers
             {
                 RatingValue = ratingCreateRequest.RatingValue,
                 RatingBody = ratingCreateRequest.RatingBody,
-                RatingTime = ratingCreateRequest.RatingTime
+                RatingTime = ratingCreateRequest.RatingTime,
+                UserId = ratingCreateRequest.UserId,
+                ProductId = ratingCreateRequest.ProductId
             };
 
             _context.Ratings.Add(rating);

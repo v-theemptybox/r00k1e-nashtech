@@ -17,9 +17,6 @@ namespace ECommerce.Backend.Models
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public int BrandId { get; set; }
-        public int UnitsInStock { get; set; }
-        public int UnitsOnOrder { get; set; }
-
         public Brand Brand { get; set; }
         public Category Category { get; set; }
         public virtual ICollection<Rating> Ratings { get; set; }

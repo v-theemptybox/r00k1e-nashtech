@@ -13,7 +13,7 @@ namespace ECommerce.Backend.Models
         public string RatingBody { get; set; }
         [ForeignKey("User")]
         public string UserId { get; set; }
-
+        public int ProductId { get; set; }
         public DateTime RatingTime { get; set; } 
         public Product Product { get; set; }
         public User User { get; set; }

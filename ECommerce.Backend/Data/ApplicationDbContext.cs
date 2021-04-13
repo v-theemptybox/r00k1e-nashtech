@@ -95,9 +95,7 @@ namespace ECommerce.Backend.Data
                     Images = "persona-5-scramble-strikers-switch.jpg",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
-                    BrandId = 1,
-                    UnitsInStock = 10,
-                    UnitsOnOrder = 0
+                    BrandId = 1
                 },
                 new Product
                 {
@@ -109,9 +107,7 @@ namespace ECommerce.Backend.Data
                     Images = "florence-switch-cover.jpg",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
-                    BrandId = 1,
-                    UnitsInStock = 10,
-                    UnitsOnOrder = 0
+                    BrandId = 1
                 },
                 new Product
                 {
@@ -123,9 +119,7 @@ namespace ECommerce.Backend.Data
                     Images = "resident-evil-3-switch-cover.jpg",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
-                    BrandId = 1,
-                    UnitsInStock = 10,
-                    UnitsOnOrder = 0
+                    BrandId = 1
                 },
                 new Product
                 {
@@ -137,9 +131,7 @@ namespace ECommerce.Backend.Data
                     Images = "grand-theft-auto-v-cover.jpg",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
-                    BrandId = 2,
-                    UnitsInStock = 10,
-                    UnitsOnOrder = 0
+                    BrandId = 2
                 },
                 new Product
                 {
@@ -151,9 +143,7 @@ namespace ECommerce.Backend.Data
                     Images = "it-takes-two-english-only-cover.jpg",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
-                    BrandId = 3,
-                    UnitsInStock = 10,
-                    UnitsOnOrder = 0
+                    BrandId = 3
                 },
                 new Product
                 {
@@ -165,9 +155,7 @@ namespace ECommerce.Backend.Data
                     Images = "metal-gear-solid-v-the-phantom-pain.jpg",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
-                    BrandId = 2,
-                    UnitsInStock = 10,
-                    UnitsOnOrder = 0
+                    BrandId = 2
                 },
                 new Product
                 {
@@ -179,9 +167,7 @@ namespace ECommerce.Backend.Data
                     Images = "outriders-cover.jpg",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
-                    BrandId = 2,
-                    UnitsInStock = 10,
-                    UnitsOnOrder = 0
+                    BrandId = 2
                 },
                 new Product
                 {
@@ -193,9 +179,7 @@ namespace ECommerce.Backend.Data
                     Images = "resident-evil-village-deluxe-edition-cover.jpg",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
-                    BrandId = 2,
-                    UnitsInStock = 10,
-                    UnitsOnOrder = 0
+                    BrandId = 2
                 },
                 new Product
                 {
@@ -207,9 +191,7 @@ namespace ECommerce.Backend.Data
                     Images = "the-witcher-3.jpg",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
-                    BrandId = 3,
-                    UnitsInStock = 10,
-                    UnitsOnOrder = 0
+                    BrandId = 3
                 },
                 new Product
                 {
@@ -221,9 +203,7 @@ namespace ECommerce.Backend.Data
                     Images = "final-fantasy-vii-remake-ps4-cover.jpg",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
-                    BrandId = 4,
-                    UnitsInStock = 10,
-                    UnitsOnOrder = 0
+                    BrandId = 4
                 },
                 new Product
                 {
@@ -235,9 +215,7 @@ namespace ECommerce.Backend.Data
                     Images = "god-of-war-4.jpg",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
-                    BrandId = 4,
-                    UnitsInStock = 10,
-                    UnitsOnOrder = 0
+                    BrandId = 4
                 },
                 new Product
                 {
@@ -249,9 +227,7 @@ namespace ECommerce.Backend.Data
                     Images = "nioh-2-the-complete-edition-ps4-cover.jpg",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
-                    BrandId = 4,
-                    UnitsInStock = 10,
-                    UnitsOnOrder = 0
+                    BrandId = 4
                 },
                 new Product
                 {
@@ -263,9 +239,7 @@ namespace ECommerce.Backend.Data
                     Images = "dragon-quest-iii-remake-ps5.jpg",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
-                    BrandId = 4,
-                    UnitsInStock = 10,
-                    UnitsOnOrder = 0
+                    BrandId = 4
                 },
                 new Product
                 {
@@ -277,9 +251,7 @@ namespace ECommerce.Backend.Data
                     Images = "assassin-2019s-creed-valhalla.jpg",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
-                    BrandId = 5,
-                    UnitsInStock = 10,
-                    UnitsOnOrder = 0
+                    BrandId = 5
                 },
                 new Product
                 {
@@ -291,9 +263,7 @@ namespace ECommerce.Backend.Data
                     Images = "the-witcher-3-xbox.jpg",
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
-                    BrandId = 5,
-                    UnitsInStock = 10,
-                    UnitsOnOrder = 0
+                    BrandId = 5
                 }
                 );
         }

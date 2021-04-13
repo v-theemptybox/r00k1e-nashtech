@@ -11,5 +11,7 @@ namespace ECommerce.Shared
         public float RatingValue { get; set; }
         public string RatingBody { get; set; }
         public DateTime RatingTime { get; set; }
+        public string UserId { get; set; }
+        public int ProductId { get; set; }
     }
 }
