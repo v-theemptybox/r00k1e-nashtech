@@ -47,14 +47,14 @@
                 @using (Html.BeginForm("AddRating", "Rating"))
                 {
                     @Html.HiddenFor(x => x.ProductId)
-                    <select id="rating" name="rating">
+                    <select id="rating" name="rvalue">
                         <option selected value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-                    <button type="submit" class="badge badge-warning" style="width:100px; color:white">Rate</button>
+                    <button  type="submit" class="badge badge-warning" style="width:100px; color:white">Rate</button>
                 }
                 <textarea name="comment" rows="3" maxlength="200" style="width:99%; border-radius:8px;"></textarea>
                 <p>@Model.RatingValue</p>

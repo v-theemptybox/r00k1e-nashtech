@@ -10,25 +10,23 @@ namespace ECommerce.Client.Controllers
     public class RatingController : Controller
     {
         private readonly IRatingAPI _ratingApiClient;
-        private readonly IConfiguration _configuration;
 
         public RatingController(IRatingAPI ratingApiClient, IConfiguration configuration)
         {
             _ratingApiClient = ratingApiClient;
-            _configuration = configuration;
         }
 
         [HttpPost]
-        public IActionResult AddRating(int ProductID, int val)
+        public IActionResult AddRating(int ProductId, float rvalue)
         {
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction(actionName: "SignIn", controllerName: "Account");
 
             RatingCreateRequest x = new RatingCreateRequest();
-            x.RatingValue = val;
+            x.RatingValue = rvalue;
             
             x.RatingTime = DateTime.Now;
-            x.ProductId = ProductID;
+            x.ProductId = ProductId;
 
             //var claimsIdentity = User.Identity as ClaimsIdentity;
             //string userId = claimsIdentity.FindFirst("sub").Value;

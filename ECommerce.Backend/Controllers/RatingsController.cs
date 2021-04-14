@@ -87,6 +87,7 @@ namespace ECommerce.Backend.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult<RatingVm>> PostRating(RatingCreateRequest ratingCreateRequest)
         {
             if (CheckIfExist(ratingCreateRequest.ProductId, ratingCreateRequest.UserId) == true)
@@ -98,9 +99,7 @@ namespace ECommerce.Backend.Controllers
                 }
 
                 ratin.RatingValue = ratingCreateRequest.RatingValue;
-                ratin.RatingBody = ratingCreateRequest.RatingBody;
-                ratin.UserId = ratingCreateRequest.UserId;
-                ratin.ProductId = ratin.ProductId;
+                
                 await _context.SaveChangesAsync();
 
                 return NoContent();
@@ -110,7 +109,7 @@ namespace ECommerce.Backend.Controllers
             {
                 RatingValue = ratingCreateRequest.RatingValue,
                 RatingBody = ratingCreateRequest.RatingBody,
-                RatingTime = DateTime.Now,
+                RatingTime = ratingCreateRequest.RatingTime,
                 UserId = ratingCreateRequest.UserId,
                 ProductId = ratingCreateRequest.ProductId
             };

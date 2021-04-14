@@ -12,7 +12,6 @@ namespace ECommerce.Shared
         public float RatingValue { get; set; }
         public string RatingBody { get; set; }
         public DateTime RatingTime { get; set; }
-        public int RatingCount { get; set; }
 
     }
 }
