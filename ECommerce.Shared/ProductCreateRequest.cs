@@ -17,7 +17,6 @@ namespace ECommerce.Shared
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public int BrandId { get; set; }
-        public float RatingValue { get; set; }
-        public int RatingCount { get; set; }
+        
     }
 }

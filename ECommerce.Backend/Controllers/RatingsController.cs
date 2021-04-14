@@ -60,9 +60,18 @@ namespace ECommerce.Backend.Controllers
             return ratingVm;
         }
 
+        bool CheckIfExist(int PId, string UId)
+        {
+            var x = _context.Ratings.Where(x => x.ProductId == PId && x.UserId == UId).FirstOrDefault();
+            if (x == null)
+                return false;
+            return true;
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRating(int id, RatingCreateRequest ratingCreateRequest)
         {
+            
             var rating = await _context.Ratings.FindAsync(id);
 
             if (rating == null)
@@ -72,9 +81,6 @@ namespace ECommerce.Backend.Controllers
 
             rating.RatingValue = ratingCreateRequest.RatingValue;
             rating.RatingBody = ratingCreateRequest.RatingBody;
-            rating.RatingTime = ratingCreateRequest.RatingTime;
-            rating.UserId = ratingCreateRequest.UserId;
-            rating.ProductId = ratingCreateRequest.ProductId;
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -83,11 +89,28 @@ namespace ECommerce.Backend.Controllers
         [HttpPost]
         public async Task<ActionResult<RatingVm>> PostRating(RatingCreateRequest ratingCreateRequest)
         {
+            if (CheckIfExist(ratingCreateRequest.ProductId, ratingCreateRequest.UserId) == true)
+            {
+                var ratin = await _context.Ratings.Where(x => x.ProductId == ratingCreateRequest.ProductId && x.UserId == ratingCreateRequest.UserId).FirstOrDefaultAsync();
+                if (ratin == null)
+                {
+                    return NotFound();
+                }
+
+                ratin.RatingValue = ratingCreateRequest.RatingValue;
+                ratin.RatingBody = ratingCreateRequest.RatingBody;
+                ratin.UserId = ratingCreateRequest.UserId;
+                ratin.ProductId = ratin.ProductId;
+                await _context.SaveChangesAsync();
+
+                return NoContent();
+            }
+
             var rating = new Rating
             {
                 RatingValue = ratingCreateRequest.RatingValue,
                 RatingBody = ratingCreateRequest.RatingBody,
-                RatingTime = ratingCreateRequest.RatingTime,
+                RatingTime = DateTime.Now,
                 UserId = ratingCreateRequest.UserId,
                 ProductId = ratingCreateRequest.ProductId
             };

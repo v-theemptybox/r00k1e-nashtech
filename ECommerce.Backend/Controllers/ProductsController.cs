@@ -38,10 +38,18 @@ namespace ECommerce.Backend.Controllers
         [AllowAnonymous]
         public async Task<ActionResult<ProductVm>> GetProduct(int id)
         {
-            var product = await _context.Products.FindAsync(id);
+            var product = await _context.Products.Include(p => p.Ratings).FirstOrDefaultAsync(x => x.ProductId == id);
+            int _RatingCount = 0;
+            float _RatingValue = 0;
             if (product == null)
             {
                 return NotFound();
+            }
+            if (product.Ratings != null)
+            {
+                _RatingCount = product.Ratings.Count();
+                if (_RatingCount > 0)
+                    _RatingValue = product.Ratings.Average(r => r.RatingValue);
             }
 
             var productVm = new ProductVm
@@ -55,6 +63,8 @@ namespace ECommerce.Backend.Controllers
                 CreatedDate = product.CreatedDate,
                 UpdatedDate = product.UpdatedDate,
                 BrandId = product.BrandId,
+                RatingValue = _RatingValue,
+                RatingCount = _RatingCount
             };
 
             //productVm.Images = _storageService.GetFileUrl(product.Images);

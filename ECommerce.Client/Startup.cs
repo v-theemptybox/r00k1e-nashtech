@@ -2,8 +2,10 @@ using ECommerce.Client.Services.APIs;
 using ECommerce.Client.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 
@@ -54,6 +56,8 @@ namespace ECommerce.Client
             services.AddHttpClient();
             services.AddTransient<IProductAPI, ProductAPI>();
             services.AddTransient<ICategoryAPI, CategoryAPI>();
+            services.AddTransient<IRatingAPI, RatingAPI>();
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddControllersWithViews();
         }
 

@@ -34,7 +34,7 @@
                     <a class="nav-link tablink" onclick="openPage('Information', this, 'gray')" id="defaultOpen">Information</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link tablink" onclick="openPage('Ratings', this, 'gray')">Ratings</a>
+                    <a class="nav-link tablink" onclick="openPage('Ratings', this, 'gray')">Ratings <span class="badge-light">@Model.RatingCount</span></a>
                 </li>
             </ul>
 
@@ -44,7 +44,20 @@
 
             <div id="Ratings" class="tabcontent">
                 <h3>Rating</h3>
-                <p></p>
+                @using (Html.BeginForm("AddRating", "Rating"))
+                {
+                    @Html.HiddenFor(x => x.ProductId)
+                    <select id="rating" name="rating">
+                        <option selected value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <button type="submit" class="badge badge-warning" style="width:100px; color:white">Rate</button>
+                }
+                <textarea name="comment" rows="3" maxlength="200" style="width:99%; border-radius:8px;"></textarea>
+                <p>@Model.RatingValue</p>
             </div>
         </div>
     </div>
