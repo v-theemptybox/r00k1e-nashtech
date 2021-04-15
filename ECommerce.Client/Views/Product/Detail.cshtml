@@ -4,20 +4,20 @@
 
 <head>
     <link rel="stylesheet" href="~/css/StyleSheet.css" />
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <div class="container">
     <div class="row detail-info">
         <div class="col-sm-6" style="text-align:center">
-            <img src="@Model.Images" alt="Card image cap" >
+            <img src="@Model.Images" alt="Card image cap">
         </div>
 
         <div class="col-sm-6" style="text-align:center; border-left: 2px inset silver">
             <div class="shadow" style="border-radius:8px;">
                 <div class="bg-dark" style="border-radius:8px 8px 0 0;">
                     <h4 style="color:white">@Model.ProductName</h4>
-                    
+
                 </div>
                 <h5>@Model.BrandId</h5>
                 <div class="buy-loc" style="font-size:23px; text-align:center; border-radius:0 0 8px 8px;">
@@ -47,17 +47,28 @@
                 @using (Html.BeginForm("AddRating", "Rating"))
                 {
                     @Html.HiddenFor(x => x.ProductId)
-                    <select id="rating" name="rvalue">
-                        <option selected value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                    <button  type="submit" class="badge badge-warning" style="width:100px; color:white">Rate</button>
+                    <div id="rating">
+                        <input type="radio" id="star5" name="rvalue" value="5" />
+                        <label class="full" for="star5" title="Awesome - 5 stars"></label>
+
+                        <input type="radio" id="star4" name="rvalue" value="4" />
+                        <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+
+                        <input type="radio" id="star3" name="rvalue" value="3" />
+                        <label class="full" for="star3" title="Meh - 3 stars"></label>
+
+                        <input type="radio" id="star2" name="rvalue" value="2" />
+                        <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+
+                        <input type="radio" id="star1" name="rvalue" value="1" />
+                        <label class="full" for="star1" title="Bad - 1 star"></label>
+                    </div>
+                    <textarea name="comment" rows="3" maxlength="200" style="width:100%; border-radius:8px;"></textarea>
+                    <p>@Model.RatingValue</p>
+                    <button id="srate" type="submit" class="btn-block">Rate</button>
                 }
-                <textarea name="comment" rows="3" maxlength="200" style="width:99%; border-radius:8px;"></textarea>
-                <p>@Model.RatingValue</p>
+
+
             </div>
         </div>
     </div>
@@ -78,4 +89,5 @@
         elmnt.style.backgroundColor = color;
     }
     document.getElementById("defaultOpen").click();
+
 </script>

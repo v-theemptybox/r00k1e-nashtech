@@ -134,10 +134,59 @@ li a:hover {
 
 #Information {
     background-color: #2d2d2d;
+    padding: 10px 10px 0 10px;
+    border-radius: 0 0 10px 10px;
 }
 
 #Ratings {
     background-color: #2d2d2d;
+    position: relative;
+    padding: 10px 10px 0 10px;
+    border-radius: 0 0 10px 10px;
 }
 
+#rating {
+    border: none;
+    float: left;
+}
 
+    #rating > input {
+        display: none;
+    }
+    /*ẩn input radio - vì chúng ta đã có label là GUI*/
+    #rating > label:before {
+        margin: 5px;
+        font-size: 1.25em;
+        font-family: FontAwesome;
+        display: inline-block;
+        content: "\f005";
+    }
+
+    #rating > label {
+        color: #ddd;
+        float: right;
+    }
+    /*float:right để lật ngược các ngôi sao lại đúng theo thứ tự trong thực tế*/
+    /*thêm màu cho sao đã chọn và các ngôi sao phía trước*/
+    #rating > input:checked ~ label,
+    #rating:not(:checked) > label:hover,
+    #rating:not(:checked) > label:hover ~ label {
+        color: #FFD700;
+    }
+        /* Hover vào các sao phía trước ngôi sao đã chọn*/
+        #rating > input:checked + label:hover,
+        #rating > input:checked ~ label:hover,
+        #rating > label:hover ~ input:checked ~ label,
+        #rating > input:checked ~ label:hover ~ label {
+            color: #FFED85;
+        }
+
+#srate {
+    width: 100px;
+    color: darkred;
+    right: 10px;
+    position: absolute;
+    bottom: 0;
+    border-radius: 10%;
+    border: 1px solid darkred;
+}
