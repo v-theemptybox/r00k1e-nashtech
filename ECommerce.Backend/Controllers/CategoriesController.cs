@@ -46,6 +46,10 @@ namespace ECommerce.Backend.Controllers
             {
                 return NotFound();
             }
+            if (id < 0)
+            {
+                throw new ArgumentOutOfRangeException("id must bigger than 0");
+            }
 
             var categoryVm = new CategoryVm
             {

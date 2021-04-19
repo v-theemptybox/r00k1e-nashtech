@@ -39,7 +39,8 @@ namespace ECommerce.Backend.Controllers
         public async Task<ActionResult<ProductVm>> GetProduct(int id)
         {
             var product = await _context.Products.Include(p => p.Ratings).FirstOrDefaultAsync(x => x.ProductId == id);
-            //var product = await _context.Products.FindAsync(id);
+            //var product02 = await _context.Products.FindAsync(id);
+            
             int _RatingCount = 0;
             float _RatingValue = 0;
             if (product == null)
