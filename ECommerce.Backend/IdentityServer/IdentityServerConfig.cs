@@ -62,9 +62,9 @@ namespace ECommerce.Backend.IdentityServer
                     RequireConsent = false,
                     RequirePkce = true,
 
-                    RedirectUris =           { $"{clientUrls["Mvc"]}/swagger/oauth2-redirect.html" },
-                    PostLogoutRedirectUris = { $"{clientUrls["Mvc"]}/swagger/oauth2-redirect.html" },
-                    AllowedCorsOrigins =     { $"{clientUrls["Mvc"]}" },
+                    RedirectUris =           { $"{clientUrls["Swagger"]}/swagger/oauth2-redirect.html" },
+                    PostLogoutRedirectUris = { $"{clientUrls["Swagger"]}/swagger/oauth2-redirect.html" },
+                    AllowedCorsOrigins =     { $"{clientUrls["Swagger"]}" },
 
                     AllowedScopes = new List<string>
                     {
