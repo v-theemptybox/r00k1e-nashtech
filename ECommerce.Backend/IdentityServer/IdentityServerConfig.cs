@@ -19,8 +19,8 @@ namespace ECommerce.Backend.IdentityServer
                   new ApiScope("rookiestore.api", "Rookie Store API")
              };
 
-        public static IEnumerable<Client> Clients =>
-            new List<Client>
+        public static IEnumerable<Client> Clients(Dictionary<string, string> clientUrls) =>
+            new []
             {
                 // machine to machine client
                 new Client
@@ -41,9 +41,9 @@ namespace ECommerce.Backend.IdentityServer
 
                     AllowedGrantTypes = GrantTypes.Code,
 
-                    RedirectUris = { "https://localhost:44319/signin-oidc" },
+                    RedirectUris = { $"{clientUrls["Mvc"]}/signin-oidc" },
 
-                    PostLogoutRedirectUris = { "https://localhost:44319/signout-callback-oidc" },
+                    PostLogoutRedirectUris = { $"{clientUrls["Mvc"]}/signout-callback-oidc" },
 
                     AllowedScopes = new List<string>
                     {
@@ -62,9 +62,9 @@ namespace ECommerce.Backend.IdentityServer
                     RequireConsent = false,
                     RequirePkce = true,
 
-                    RedirectUris =           { $"https://localhost:44318/swagger/oauth2-redirect.html" },
-                    PostLogoutRedirectUris = { $"https://localhost:44318/swagger/oauth2-redirect.html" },
-                    AllowedCorsOrigins =     { $"https://localhost:44318" },
+                    RedirectUris =           { $"{clientUrls["Mvc"]}/swagger/oauth2-redirect.html" },
+                    PostLogoutRedirectUris = { $"{clientUrls["Mvc"]}/swagger/oauth2-redirect.html" },
+                    AllowedCorsOrigins =     { $"{clientUrls["Mvc"]}" },
 
                     AllowedScopes = new List<string>
                     {
