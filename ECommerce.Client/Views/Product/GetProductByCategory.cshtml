@@ -8,12 +8,14 @@
 
 <head>
     <link rel="stylesheet" href="~/css/IndexStyle.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/JavaScript.js"></script>
 </head>
 
 <div class="container">
     <div class="title-block">
         <p>Trending Games</p>
-        <a>View all</a>
+        <button id="all">View All</button>
     </div>
     <div class="row">
         @foreach (var product in Model)

@@ -9,13 +9,14 @@
 <head>
     <link rel="stylesheet" href="~/css/IndexStyle.css" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/JavaScript.js"></script>
 </head>
 
 <div class="container main-bg">
     <img src="~/imgs/abstract-neon-light-gaming-bg.jpg" style="width:100%" height="200px" />
     <div class="title-block">
         <p>Trending Games</p>
-
+        <button id="all">View All</button>
     </div>
     <div class="row list">
         @foreach (var product in Model)
@@ -33,31 +34,6 @@
             </div>
         }
     </div>
-    <button id="next">View more</button>
+    <button id="next">View More</button>
 </div>
-<script>
-    $(document).ready(function () {
-        
-        var list = $(".item");       
-        var numToShow = 4;
-        var button = $("#next");
-        var numInList = list.length;
-        list.hide();
-        if (numInList > numToShow) {
-            button.show();
-        }
-        //show từ 0-4 item
-        list.slice(0, numToShow).show();
-        //event click view 4 item mỗi lần click
-        button.click(function () {
-            var showing = list.filter(':visible').length;
-            list.slice(showing - 1, showing + numToShow).fadeIn();
-            var nowShowing = list.filter(':visible').length;
-            if (nowShowing >= numInList) {
-                button.hide();
-            }
-        });
-
-    });
-</script>
 

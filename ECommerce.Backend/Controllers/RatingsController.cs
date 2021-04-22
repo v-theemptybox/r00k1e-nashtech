@@ -87,7 +87,6 @@ namespace ECommerce.Backend.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<ActionResult<RatingVm>> PostRating(RatingCreateRequest ratingCreateRequest)
         {
             if (CheckIfExist(ratingCreateRequest.ProductId, ratingCreateRequest.UserId) == true)
