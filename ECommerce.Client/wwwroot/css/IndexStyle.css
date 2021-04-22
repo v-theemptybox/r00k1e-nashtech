@@ -8,6 +8,8 @@
 .main-bg {
     background-color: #444;
     border-radius: 8px;
+    position:relative;
+    padding-bottom: 30px;
 }
 
 
@@ -52,5 +54,13 @@
 }
 .card-img:hover {
     transform: scale(1.1);
+}
+#next{
+    position:absolute;
+    right:10px;
+    bottom:5px;
+    color: azure;
+    border-radius: 8px;
+    background:teal;
 }
 

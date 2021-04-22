@@ -60,8 +60,8 @@ namespace xUnitTest
 
             var controller = new CategoriesController(_dbContext);
             var result = await controller.GetCategorys();
-
             var actionResult = Assert.IsType<ActionResult<IEnumerable<CategoryVm>>>(result);
+            
             Assert.NotEmpty(actionResult.Value);
         }
         [Fact]
