@@ -62,6 +62,7 @@ namespace ECommerce.Backend.Controllers
         }
 
         [HttpPut("{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> PutCategory(int id, CategoryCreateRequest categoryCreateRequest)
         {
             var category = await _context.Categories.FindAsync(id);
@@ -79,6 +80,7 @@ namespace ECommerce.Backend.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult<CategoryVm>> PostCategory(CategoryCreateRequest categoryCreateRequest)
         {
             var category = new Category

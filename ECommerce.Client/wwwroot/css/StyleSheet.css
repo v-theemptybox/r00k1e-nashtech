@@ -144,6 +144,12 @@ li a:hover {
     padding: 10px 10px 0 10px;
     border-radius: 0 0 10px 10px;
 }
+#rcover {
+    color:yellow;
+}
+.s1{
+    font-size:70%;
+}
 
 #rating {
     border: none;
@@ -153,9 +159,8 @@ li a:hover {
     #rating > input {
         display: none;
     }
-    /*ẩn input radio - vì chúng ta đã có label là GUI*/
+    /*ẩn input radio, có label là GUI*/
     #rating > label:before {
-        margin: 5px;
         font-size: 1.25em;
         font-family: FontAwesome;
         display: inline-block;

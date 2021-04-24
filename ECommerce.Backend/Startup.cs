@@ -26,6 +26,15 @@ namespace ECommerce.Backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Config cors (React page)
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAnyOrigin", builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
+
             var clientUrls = new Dictionary<string, string>
             {
                 ["Mvc"] = Configuration["ClientUrl:Mvc"],
@@ -120,6 +129,7 @@ namespace ECommerce.Backend
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseCors("AllowAnyOrigin");
 
             app.UseIdentityServer();
             app.UseAuthorization();

@@ -5,7 +5,6 @@ using ECommerce.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
@@ -27,7 +26,6 @@ namespace xUnitTest
             _dbContext = new ApplicationDbContext(options);
             _dbContext.Database.EnsureCreated();
         }
-
         
 
         [Fact]
@@ -41,7 +39,6 @@ namespace xUnitTest
 
             var controller = new CategoriesController(_dbContext);
             var result = await controller.PostCategory(category);
-
             var createdAtActionResult = Assert.IsType<CreatedAtActionResult>(result.Result);
             var returnValue = Assert.IsType<CategoryVm>(createdAtActionResult.Value);
             Assert.Equal("Stadia", returnValue.CategoryName);
