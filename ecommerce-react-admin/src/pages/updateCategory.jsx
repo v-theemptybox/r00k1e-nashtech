@@ -17,7 +17,7 @@ const UpdateCategory = (props) => {
         let categoryName = document.getElementById("categoryName").value;
         let description = document.getElementById("description").value;
 
-        if (categoryName == '' || description == '') {
+        if (categoryName === '' || description === '') {
             document.getElementById('error').innerHTML = "Không chừa trống dữ liệu!";
         }
         else {

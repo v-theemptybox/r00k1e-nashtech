@@ -16,10 +16,10 @@ const Category = () => {
             <table className="table table-striped mt-3">
                 <tbody>
                     <tr>
-                        <th>Mã loại</th>
-                        <th>Tên loại</th>
-                        <th>Mô tả</th>
-                        <th>Chức năng</th>
+                        <th>Category Id</th>
+                        <th>Category Name</th>
+                        <th>Description</th>
+                        <th>Function</th>
                     </tr>
                 </tbody>
                 {categoryList.map((item, index) => {

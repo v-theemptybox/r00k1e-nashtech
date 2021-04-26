@@ -70,7 +70,6 @@ namespace ECommerce.Backend.Controllers
             };
 
             //productVm.Images = _storageService.GetFileUrl(product.Images);
-            _logger.LogInformation("get product");
 
             return productVm;
         }
@@ -108,12 +107,6 @@ namespace ECommerce.Backend.Controllers
                     BrandId = x.BrandId,
 
                 }).ToList();
-
-            _logger.LogInformation("get products");
-            using (var activity = DemoSource.StartActivity("This is sample activity"))
-            {
-                _logger.LogInformation("Hello, World!aaaaaaaaaaa");
-            }
 
             return productVms;
         }

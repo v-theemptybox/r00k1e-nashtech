@@ -5,7 +5,7 @@ import Footer from './Components/Footer'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Category from "./pages/category";
 import UpdateCategory from "./pages/updateCategory";
-import env from "react-dotenv";
+import Product from "./pages/product";
 
 
 function App() {
@@ -16,9 +16,9 @@ function App() {
         <Route exact path="/category">
           <Category />
         </Route>
-        {/* <Route exact path="/category/:id">
-          <UpdateCategory />
-        </Route> */}
+        <Route exact path="/products">
+          <Product />
+        </Route>
         <Route exact path="/category/update/:id?" render={(props) => <UpdateCategory {...props} />}/> 
         <Footer></Footer>
       </Router>
