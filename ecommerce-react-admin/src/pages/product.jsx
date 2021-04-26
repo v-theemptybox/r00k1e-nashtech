@@ -46,9 +46,9 @@ const Products = () => {
                             <td> {item.updatedDate}</td>
                             <td>
                                 <div>
-                                    <Link to={`/category/update/${item.productId}`} className="btn btn-primary" style={{ width: '100%', height: 'auto' }} >Update</Link>
+                                    <Link to={`/products/update/${item.productId}`} className="btn btn-primary" style={{ width: '100%', height: 'auto' }} >Update</Link>
                                     <br></br>
-                                    <a className="btn btn-danger" style={{ width: '100%', height: 'auto' }} onClick={() => this.DeleteProduct(item.categoryId)} href="#">Xóa</a>
+                                    <a className="btn btn-danger" style={{ width: '100%', height: 'auto' }} onClick={() => this.DeleteProduct(item.categoryId)} href="#">Delete</a>
                                 </div>
                             </td>
                         </tr>

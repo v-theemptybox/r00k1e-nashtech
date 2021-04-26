@@ -6,13 +6,16 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Category from "./pages/category";
 import UpdateCategory from "./pages/updateCategory";
 import Product from "./pages/product";
-
+import User from "./pages/user";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Header></Header>
+        <Route exact path="/users">
+          <User></User>
+        </Route>
         <Route exact path="/category">
           <Category />
         </Route>
