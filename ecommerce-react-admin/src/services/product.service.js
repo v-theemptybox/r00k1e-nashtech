@@ -9,7 +9,9 @@ const GetProductById = (id) => {
 }
 
 const UpdateProduct = (id, params) => {
-    return api.put('/api/Products/' + id, params);
+    return api.put('/api/Products/' + id, params).then((res) =>{
+        console.log(res);
+            });
 }
 
 export const ProductServices = {

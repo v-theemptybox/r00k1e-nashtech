@@ -18,7 +18,7 @@ const UpdateCategory = (props) => {
         let description = document.getElementById("description").value;
 
         if (categoryName === '' || description === '') {
-            document.getElementById('error').innerHTML = "Không chừa trống dữ liệu!";
+            document.getElementById('error').innerHTML = "Empty Value!";
         }
         else {
             let params = {

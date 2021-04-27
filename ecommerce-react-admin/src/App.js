@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Category from "./pages/category";
 import UpdateCategory from "./pages/updateCategory";
 import Product from "./pages/product";
+import UpdateProduct from "./pages/updateProduct";
 import User from "./pages/user";
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
         <Route exact path="/products">
           <Product />
         </Route>
-        <Route exact path="/category/update/:id?" render={(props) => <UpdateCategory {...props} />}/> 
+        <Route exact path="/category/update/:id?" render={(props) => <UpdateCategory {...props} />}></Route> 
+        <Route exact path="/products/update/:id?" render={(props) => <UpdateProduct {...props} />}></Route> 
         <Footer></Footer>
       </Router>
     </div>

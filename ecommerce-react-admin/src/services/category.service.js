@@ -9,7 +9,9 @@ const GetCategoryById = (id) => {
 }
 
 const UpdateCategory = (id, params) => {
-    return api.put('/api/Categories/' + id, params);
+    return api.put('/api/Categories/' + id, params).then((res) =>{
+console.log(res);
+    });
 }
 
 export const CategoryService = {

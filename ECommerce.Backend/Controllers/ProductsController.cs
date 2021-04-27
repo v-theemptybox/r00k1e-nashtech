@@ -120,8 +120,8 @@ namespace ECommerce.Backend.Controllers
                 CategoryId = productCreateRequest.CategoryId,
                 Description = productCreateRequest.Description,
                 Price = productCreateRequest.Price,
-                CreatedDate = productCreateRequest.CreatedDate,
-                UpdatedDate = productCreateRequest.CreatedDate,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
                 BrandId = productCreateRequest.BrandId,
             };
 
@@ -150,7 +150,8 @@ namespace ECommerce.Backend.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, ProductCreateRequest productCreateRequest)
+        [AllowAnonymous]
+        public async Task<IActionResult> PutProduct(int id,[FromForm] ProductCreateRequest productCreateRequest)
         {
             var product = await _context.Products.FindAsync(id);
 
@@ -164,9 +165,9 @@ namespace ECommerce.Backend.Controllers
             product.Description = productCreateRequest.Description;
             product.Price = productCreateRequest.Price;
             product.CreatedDate = productCreateRequest.CreatedDate;
-            product.UpdatedDate = productCreateRequest.CreatedDate;
+            product.UpdatedDate = productCreateRequest.UpdatedDate;
             product.BrandId = productCreateRequest.BrandId;
-
+            product.Images = await SaveFile(productCreateRequest.Images);
 
             await _context.SaveChangesAsync();
 
