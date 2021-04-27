@@ -61,7 +61,6 @@ li a:hover {
     outline: none;
     color: #fff;
     background: #111;
-    cursor: pointer;
     position: relative;
     z-index: 0;
     border-radius: 10px;
@@ -83,14 +82,6 @@ li a:hover {
         transition: opacity .3s ease-in-out;
         border-radius: 10px;
     }
-
-    .detail-info:active {
-        color: #000
-    }
-
-        .detail-info:active:after {
-            background: transparent;
-        }
 
     .detail-info:hover:before {
         opacity: 1;

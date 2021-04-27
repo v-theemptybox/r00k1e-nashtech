@@ -63,8 +63,9 @@
                         <input type="radio" id="star1" name="rvalue" value="1" />
                         <label class="full" for="star1" title="Bad - 1 star"></label>
                     </div>
-                    <textarea name="comment" rows="3" maxlength="200" style="width:100%; border-radius:8px;"></textarea>
-                    <p>@Model.RatingValue</p>
+                    @*<textarea name="comment" rows="3" maxlength="200" style="width:100%; border-radius:8px;"></textarea>*@
+                    <br /><br />
+                          <p>Average Rating Score: @Model.RatingValue</p>
                     <button id="srate" type="submit" class="btn-block">Rate</button>
                 }
 
