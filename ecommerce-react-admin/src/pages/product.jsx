@@ -5,22 +5,17 @@ import TextTruncate from 'react-text-truncate';
 
 const Products = () => {
     const [productList, setProductList] = useState([]);
-    const [rmId, setProduct] = useState("");
-    useEffect(() => {
-        ProductServices.GetAllProduct().then((response) => {
-            console.log(response.data);
-            setProductList(response.data);
-            
-        })
-    })
 
     useEffect(() => {
         ProductServices.GetAllProduct().then((response) => {
-            console.log(response.data);
             setProductList(response.data);
-            
         })
-    })
+    },[])
+
+    const btnDelete = (id) => {
+        ProductServices.DeleteProduct(id);
+        ProductServices.GetAllProduct().then(setProductList(productList.filter(x => x.productId != id)));
+    }
 
     return (
         <div className="container">
@@ -54,9 +49,9 @@ const Products = () => {
                             <td> {item.updatedDate}</td>
                             <td>
                                 <div>
-                                    <Link to={`/products/update/${item.productId}`} className="btn btn-primary" style={{ width: '100%', height: 'auto' }} >Update</Link>
+                                    <Link to={`/products/update/${item.productId}`} className="btn btn-primary" style={{ width: '100%', height: 'auto' }} >Edit</Link>
                                     <br></br>
-                                    <a className="btn btn-danger" style={{ width: '100%', height: 'auto' }} onClick={() => this.DeleteCategory(item.categoryId)} href="#">Delete</a>
+                                    <a className="btn btn-danger" style={{ width: '100%', height: 'auto' }} onClick={() => btnDelete(item.productId)}>Delete</a>
                                 </div>
                             </td>
                         </tr>

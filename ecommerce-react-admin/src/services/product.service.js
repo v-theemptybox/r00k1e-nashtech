@@ -10,12 +10,15 @@ const GetProductById = (id) => {
 
 const UpdateProduct = (id, params) => {
     return api.put('/api/Products/' + id, params).then((res) =>{
-        console.log(res);
             });
+}
+const DeleteProduct = (id) => {
+    return api.delete('/api/Products/' + id);
 }
 
 export const ProductServices = {
     GetAllProduct,
     GetProductById,
-    UpdateProduct
+    UpdateProduct,
+    DeleteProduct
 };

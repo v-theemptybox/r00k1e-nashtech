@@ -4,7 +4,6 @@ import { CategoryService } from '../services/category.service';
 
 const Category = () => {
     const [categoryList, setCategoryList] = useState([]);
-    const [cId, setCId] = useState(0);
 
     useEffect(() => {
         CategoryService.GetAllCategory().then((response) => {
@@ -38,7 +37,7 @@ const Category = () => {
                                 <div>
                                     <Link to={`/category/update/${item.categoryId}`} className="btn btn-primary" style={{ width: '100%', height: 'auto' }} >Update</Link>
                                     <br></br>
-                                    <a className="btn btn-danger" style={{ width: '100%', height: 'auto' }} onClick={() =>  btnDelete(item.categoryId)}>Delete</a>
+                                    <a className="btn btn-danger" style={{ width: '100%', height: 'auto' }} onClick={() =>  btnDelete(item.categoryId)}>Edit</a>
                                 </div>
                             </td>
                         </tr>
