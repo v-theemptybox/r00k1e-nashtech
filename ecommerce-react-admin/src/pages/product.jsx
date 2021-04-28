@@ -5,6 +5,14 @@ import TextTruncate from 'react-text-truncate';
 
 const Products = () => {
     const [productList, setProductList] = useState([]);
+    const [rmId, setProduct] = useState("");
+    useEffect(() => {
+        ProductServices.GetAllProduct().then((response) => {
+            console.log(response.data);
+            setProductList(response.data);
+            
+        })
+    })
 
     useEffect(() => {
         ProductServices.GetAllProduct().then((response) => {
@@ -48,7 +56,7 @@ const Products = () => {
                                 <div>
                                     <Link to={`/products/update/${item.productId}`} className="btn btn-primary" style={{ width: '100%', height: 'auto' }} >Update</Link>
                                     <br></br>
-                                    <a className="btn btn-danger" style={{ width: '100%', height: 'auto' }} onClick={() => this.DeleteProduct(item.categoryId)} href="#">Delete</a>
+                                    <a className="btn btn-danger" style={{ width: '100%', height: 'auto' }} onClick={() => this.DeleteCategory(item.categoryId)} href="#">Delete</a>
                                 </div>
                             </td>
                         </tr>

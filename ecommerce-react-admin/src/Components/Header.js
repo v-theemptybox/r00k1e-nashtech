@@ -9,14 +9,17 @@ const Example = (props) => {
     <div>
       <Navbar color="faded" light>
         <NavbarBrand href="/" className="mr-auto">Admin.Site</NavbarBrand>
+        <Nav>
+        <NavLink href="/category">Categories</NavLink> <NavLink href="/products">Products</NavLink>
+        </Nav>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink href="/category">Categories</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/login">Login</NavLink>
+              <NavLink href="/products">Products</NavLink>
             </NavItem>
           </Nav>
         </Collapse>

@@ -9,13 +9,15 @@ const GetCategoryById = (id) => {
 }
 
 const UpdateCategory = (id, params) => {
-    return api.put('/api/Categories/' + id, params).then((res) =>{
-console.log(res);
-    });
+    return api.put('/api/Categories/' + id, params);
+}
+const DeleteCategory = (id) => {
+    return api.delete('/api/Categories/' + id);
 }
 
 export const CategoryService = {
     GetAllCategory,
     GetCategoryById,
-    UpdateCategory
+    UpdateCategory,
+    DeleteCategory
 };

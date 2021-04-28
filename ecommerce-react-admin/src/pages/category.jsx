@@ -4,12 +4,18 @@ import { CategoryService } from '../services/category.service';
 
 const Category = () => {
     const [categoryList, setCategoryList] = useState([]);
+    const [cId, setCId] = useState(0);
 
     useEffect(() => {
         CategoryService.GetAllCategory().then((response) => {
             setCategoryList(response.data);
         })
-    })
+    },[])
+
+    const btnDelete = (id) => {
+        CategoryService.GetAllCategory().then(setCategoryList(categoryList.filter(x => x.categoryId != id)));
+        CategoryService.DeleteCategory(id);
+    }
 
     return (
         <div className="container">
@@ -30,8 +36,9 @@ const Category = () => {
                             <td> {item.description}</td>
                             <td>
                                 <div>
-                                    <Link to={`/category/update/${item.categoryId}`} className="badge badge-info" style={{ width: 70, height: 20 }} >Cập nhập</Link>
-                                    <a className="badge badge-danger" style={{ width: 70, height: 20 }} onClick={() => this.DeleteCategory(item.categoryID)} href="#">Xóa</a>
+                                    <Link to={`/category/update/${item.categoryId}`} className="btn btn-primary" style={{ width: '100%', height: 'auto' }} >Update</Link>
+                                    <br></br>
+                                    <a className="btn btn-danger" style={{ width: '100%', height: 'auto' }} onClick={() =>  btnDelete(item.categoryId)}>Delete</a>
                                 </div>
                             </td>
                         </tr>
