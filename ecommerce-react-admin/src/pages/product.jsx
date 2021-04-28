@@ -18,7 +18,11 @@ const Products = () => {
     }
 
     return (
+        
         <div className="container">
+            <Link to={"/products/create/"} type="button" class="btn btn-success">
+                    &#10010; Create
+                </Link>
             <table className="table table-striped mt-3">
                 <tbody>
                     <tr>

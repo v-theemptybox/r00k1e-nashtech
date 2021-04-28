@@ -10,7 +10,7 @@ const Example = (props) => {
       <Navbar color="faded" light>
         <NavbarBrand href="/" className="mr-auto">Admin.Site</NavbarBrand>
         <Nav>
-        <NavLink href="/category">Categories</NavLink> <NavLink href="/products">Products</NavLink>
+        <NavLink href="/category">Categories</NavLink> <NavLink href="/products">Products</NavLink><NavLink href="/users">Users</NavLink>
         </Nav>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
@@ -20,6 +20,9 @@ const Example = (props) => {
             </NavItem>
             <NavItem>
               <NavLink href="/products">Products</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/users">Users</NavLink>
             </NavItem>
           </Nav>
         </Collapse>

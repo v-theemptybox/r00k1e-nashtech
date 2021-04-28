@@ -26,7 +26,7 @@ function App() {
         <Route exact path="/category/update/:id?" render={(props) => <UpdateCategory {...props} />}></Route>
         <Route exact path="/category/create/" render={(props) => <UpdateCategory {...props} />}></Route>   
         <Route exact path="/products/update/:id?" render={(props) => <UpdateProduct {...props} />}></Route>
-        
+        <Route exact path="/products/create/" render={(props) => <UpdateProduct {...props} />}></Route>
         <Footer></Footer>
       </Router>
     </div>

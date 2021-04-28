@@ -8,8 +8,8 @@ const UpdateCategory = (props) => {
 
     useEffect(() => {
         setId(props.match.params.id);
+        console.log(id);
         if(id) {
-          
             CategoryService.GetCategoryById(props.match.params.id).then((response) =>{
             setCategory(response.data);
         })

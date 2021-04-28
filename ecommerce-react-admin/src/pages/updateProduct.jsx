@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductServices } from '../services/product.service';
-import {Button} from 'reactstrap';
 
 const UpdateProduct = (props) => {
     const [product, setProduct] = useState([]);
@@ -9,11 +8,13 @@ const UpdateProduct = (props) => {
 
     useEffect(() => {
         setId(props.match.params.id);
-        ProductServices.GetProductById(props.match.params.id).then((response) =>{
-            setProduct(response.data);
-            //console.log(response.data);
-        })
-    },[])
+        if(id){
+            ProductServices.GetProductById(props.match.params.id).then((response) =>{
+                setProduct(response.data);
+                //console.log(response.data);
+            })
+        }
+    })
 
 
     const ButtonClick = () =>{
@@ -26,10 +27,6 @@ const UpdateProduct = (props) => {
         let brandId = document.getElementById("brandId").value;
         let categoryId = document.getElementById("categoryId").value;
 
-        console.log(images);
-        // const formData = new FormData();
-        //     formData.append("images", images, images.name);
-        // console.log(formData);  
         if (productName === '' || description === '') {
             document.getElementById('error').innerHTML = "Empty value!";
         }
@@ -45,24 +42,16 @@ const UpdateProduct = (props) => {
             formData.append('updatedDate', updatedDate.toString());
             formData.append('brandId', brandId.toString());
 
-            
-            // let params = {
-            //     images: images,
-            //     productName: productName,
-            //     price: price,
-            //     description: description,
-            //     createdDate: createdDate,
-            //     updatedDate: updatedDate,
-            //     brandId: brandId,
-            //     categoryId: categoryId
-            // }
-
             if (id) {
-                console.log(formData);
+                //console.log(formData);
                 ProductServices.UpdateProduct(id, formData).then((response) => {
                     
                 });
             }
+            else
+            ProductServices.CreateProduct(formData).then((response) => {
+                    
+            });
 
         }
     }
@@ -115,14 +104,14 @@ const UpdateProduct = (props) => {
             <div class="form-group">
                 <label class="control-label col-md-2"><b>Created Date</b></label>
                 <div class="col-md-5">
-                    <input type='datetime' className="form-control" id="createdDate" value={product.createdDate} name='name' placeholder='Input created date' />
+                    <input type='datetime' className="form-control" id="createdDate" value={product.createdDate} defaultValue={Date.now}  name='name' placeholder='Input created date' />
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="control-label col-md-2"><b>Updated Date</b></label>
                 <div class="col-md-5">
-                    <input type='datetime' className="form-control" id="updatedDate" value={product.updatedDate} name='name' placeholder='Input updated date' />
+                    <input type='datetime' className="form-control" id="updatedDate" value={product.updatedDate} defaultValue={Date.now} name='name' placeholder='Input updated date' />
                 </div>
             </div>
 
