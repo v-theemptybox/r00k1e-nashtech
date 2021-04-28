@@ -128,9 +128,8 @@ const UpdateProduct = (props) => {
 
             <div class="col-md-offset-2 col-md-10">
                 <p id="error" className="text-danger"></p>
-                {/* <Button onClick={ButtonClick}  class="btn btn-primary"> {id ? "Cập nhật" : "Thêm mới"}</Button> */}
                 
-                <Link  to={"/products"} onClick={ButtonClick}  class="btn btn-primary"> {id ? "Cập nhật" : "Thêm mới"}</Link>
+                <Link  to={"/products"} onClick={ButtonClick}  class="btn btn-primary"> {id ? "Update" : "Create"}</Link>
             </div>
         </div>
     )

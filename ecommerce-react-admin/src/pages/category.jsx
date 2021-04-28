@@ -18,6 +18,11 @@ const Category = () => {
 
     return (
         <div className="container">
+            <div>
+                <Link to={"/category/create/"} type="button" class="btn btn-success">
+                    &#10010; Create
+                </Link>
+            </div>
             <table className="table table-striped mt-3">
                 <tbody>
                     <tr>
@@ -35,9 +40,9 @@ const Category = () => {
                             <td> {item.description}</td>
                             <td>
                                 <div>
-                                    <Link to={`/category/update/${item.categoryId}`} className="btn btn-primary" style={{ width: '100%', height: 'auto' }} >Update</Link>
+                                    <Link to={`/category/update/${item.categoryId}`} className="btn btn-primary" style={{ width: '100%', height: 'auto' }} >&#9851;Edit</Link>
                                     <br></br>
-                                    <a className="btn btn-danger" style={{ width: '100%', height: 'auto' }} onClick={() =>  btnDelete(item.categoryId)}>Edit</a>
+                                    <a className="btn btn-danger" style={{ width: '100%', height: 'auto' }} onClick={() =>  btnDelete(item.categoryId)}>&#10060;Delete</a>
                                 </div>
                             </td>
                         </tr>
