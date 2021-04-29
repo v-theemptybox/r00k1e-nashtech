@@ -4,12 +4,13 @@ import { CategoryService } from '../services/category.service';
 
 const UpdateCategory = (props) => {
     const [category, setCategory] = useState([]);
-    const [id, setId] = useState(0);
+    const [id, setId] = useState();
 
     useEffect(() => {
-        setId(props.match.params.id);
-        console.log(id);
-        if(id) {
+        let cid = props.match.params.id;
+        // setId(props.match.params.id);
+        setId(cid)
+        if(cid) {
             CategoryService.GetCategoryById(props.match.params.id).then((response) =>{
             setCategory(response.data);
         })

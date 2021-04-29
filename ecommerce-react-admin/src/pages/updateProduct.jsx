@@ -4,18 +4,17 @@ import { ProductServices } from '../services/product.service';
 
 const UpdateProduct = (props) => {
     const [product, setProduct] = useState([]);
-    const [id, setId] = useState(0);
+    const [id, setId] = useState();
 
     useEffect(() => {
-        setId(props.match.params.id);
-        if(id){
+        let pid=props.match.params.id;
+        setId(pid);
+        if(pid){
             ProductServices.GetProductById(props.match.params.id).then((response) =>{
                 setProduct(response.data);
-                //console.log(response.data);
             })
         }
-    })
-
+    },[])
 
     const ButtonClick = () =>{
         let images = document.getElementById("productImg").files;

@@ -246,7 +246,8 @@ namespace ECommerce.Backend.Data
                     ProductId = 14,
                     ProductName = "Assassin Creed Valhalla",
                     CategoryId = 4,
-                    Description = "Release in 2022",
+                    Description = "Become Eivor, a Viking raider raised to be a fearless warrior, and lead your clan from icy desolation in Norway to a new home amid the lush farmlands of ninth-century England. Find your settlement and conquer this hostile land by any means to earn a place in Valhalla." +
+                    "England in the age of the Vikings is a fractured nation of petty lords and warring kingdoms.Beneath the chaos lies a rich and untamed land waiting for a new conqueror.Will it be you ? ",
                     Price = new Decimal(49.99),
                     Images = "assassin-2019s-creed-valhalla.jpg",
                     CreatedDate = DateTime.Now,

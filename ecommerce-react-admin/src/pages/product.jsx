@@ -31,7 +31,6 @@ const Products = () => {
                         <th>Product Name</th>
                         <th>Price</th>
                         <th>Description</th>
-                        <th>Created Date</th>
                         <th>Updated Date</th>
                         <th>Management</th>
                     </tr>
@@ -49,13 +48,12 @@ const Products = () => {
                                 truncateText="…"
                                 text={item.description}            
                             /></td>
-                            <td> {item.createdDate}</td>
                             <td> {item.updatedDate}</td>
                             <td>
                                 <div>
-                                    <Link to={`/products/update/${item.productId}`} className="btn btn-primary" style={{ width: '100%', height: 'auto' }} >Edit</Link>
+                                    <Link to={`/products/update/${item.productId}`} className="btn btn-primary" style={{ width: '100%', height: 'auto' }} >&#9851;Edit</Link>
                                     <br></br>
-                                    <a className="btn btn-danger" style={{ width: '100%', height: 'auto' }} onClick={() => btnDelete(item.productId)}>Delete</a>
+                                    <a className="btn btn-danger" style={{ width: '100%', height: 'auto' }} onClick={() => btnDelete(item.productId)}>&#10060;Delete</a>
                                 </div>
                             </td>
                         </tr>
