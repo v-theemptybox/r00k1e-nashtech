@@ -7,7 +7,7 @@
 - __Deploy__: Microsoft Azure
 
 ## 2. Structure and Functionality
-![My Shop Architecture](https://imgur.com/a/nut7Rly)
+![My Shop Architecture](https://github.com/v-theemptybox/r00k1e-nashtech/blob/master/img/folder_structure.jpg)
 ### I. Backend (Entity Framework - Code first)
 - APIs Provider and Handles
 - Models
