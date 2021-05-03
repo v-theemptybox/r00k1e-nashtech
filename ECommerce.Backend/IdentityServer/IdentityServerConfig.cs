@@ -72,6 +72,24 @@ namespace ECommerce.Backend.IdentityServer
                         IdentityServerConstants.StandardScopes.Profile,
                         "rookiestore.api"
                     }
+                },
+
+                new Client
+                  {
+                    ClientName = "react_admin",
+                    ClientId = "react_admin",
+                    ClientSecrets = { new Secret("secret".Sha256()) },
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+
+
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "rookiestore.api"
+                    },
+
+                    AllowOfflineAccess = true,
                 }
             };
     }

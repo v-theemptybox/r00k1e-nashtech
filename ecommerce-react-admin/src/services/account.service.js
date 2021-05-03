@@ -1,6 +1,6 @@
-import { api } from '../utilities/api.config';
+import api from '../utilities/api.config';
 
-const LoginService = (username, password) =>{
+const  LoginService = async (username, password) =>{
     var urlencoded = new URLSearchParams();
         urlencoded.append("grant_type", "password");
         urlencoded.append("username", username);
@@ -10,7 +10,9 @@ const LoginService = (username, password) =>{
         
     return await api.post('/connect/token', urlencoded)
             .then(response => {
+                console.log(response);
                 return response.data;
+                
             })
             .catch(error => {
                 if (error.response) {
@@ -24,7 +26,7 @@ const CheckRoles = async (token) => {
     return await api.get('/connect/userinfo');
 }
 
-export default AccountService{
+export const AccountService = {
     LoginService,
     CheckRoles
 }
