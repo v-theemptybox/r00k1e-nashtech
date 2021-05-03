@@ -7,6 +7,7 @@
 - __Deploy__: Microsoft Azure
 
 ## 2. Structure and Functionality
+![My Shop Architecture](https://imgur.com/a/nut7Rly)
 ### I. Backend (Entity Framework - Code first)
 - APIs Provider and Handles
 - Models
@@ -66,6 +67,9 @@ $ npm i react-router-dom
 $ npm i react-cookie
 $ npm i prop-types
 ```
+### IV. Unit Test (xUnit.net)
+- Categories Controller
+- Brands Controller
 
 ## 3. For more:
 :octocat: https://github.com/v-theemptybox
