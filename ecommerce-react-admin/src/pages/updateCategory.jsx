@@ -60,6 +60,7 @@ const UpdateCategory = (props) => {
 
             <div class="col-md-offset-2 col-md-10">
                 <p id="error" className="text-danger"></p>
+                {/* <button  onClick={ButtonClick}  class="btn btn-primary"> {id ? "Update" : "Create"}</button> */}
                 <Link  to={"/category"} onClick={ButtonClick}  class="btn btn-primary"> {id ? "Update" : "Create"}</Link>
             </div>
         </div>

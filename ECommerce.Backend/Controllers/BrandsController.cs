@@ -85,9 +85,14 @@ namespace ECommerce.Backend.Controllers
         public async Task<IActionResult> DeleteBrand(int id)
         {
             var brand = await _context.Brands.FindAsync(id);
+            var brands = await _context.Brands.Include(x => x.Products).FirstOrDefaultAsync(x => x.Id == id);
             if (brand == null)
             {
                 return NotFound();
+            }
+            else if (brands.Products.Count > 0)
+            {
+                return NoContent();
             }
 
             _context.Brands.Remove(brand);

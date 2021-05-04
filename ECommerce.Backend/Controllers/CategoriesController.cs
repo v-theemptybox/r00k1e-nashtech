@@ -105,15 +105,19 @@ namespace ECommerce.Backend.Controllers
         public async Task<IActionResult> DeleteCategory(int id)
         {
             var category = await _context.Categories.FindAsync(id);
+            var categories = await _context.Categories.Include(x => x.Products).FirstOrDefaultAsync(x => x.CategoryId == id);
             if (category == null)
             {
                 return NotFound();
             }
-
+            else if (categories.Products.Count > 0)
+            {
+                return NoContent();
+            }
             _context.Categories.Remove(category);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok();
         }
     }
 }

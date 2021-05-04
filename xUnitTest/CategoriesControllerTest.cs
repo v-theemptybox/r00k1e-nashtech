@@ -94,7 +94,7 @@ namespace xUnitTest
 
             var controller = new CategoriesController(_dbContext);
             var result = await controller.DeleteCategory(222);
-            var actionResult = Assert.IsType<NoContentResult>(result);
+            var actionResult = Assert.IsType<OkResult>(result);
 
             Assert.NotNull(result);
             Assert.NotNull(actionResult);

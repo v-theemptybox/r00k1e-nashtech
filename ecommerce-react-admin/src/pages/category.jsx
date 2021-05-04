@@ -11,11 +11,23 @@ const Category = () => {
         })
     },[])
 
+    //let result = window.confirm("Want to delete?");
     const btnDelete = (id) => {
-        CategoryService.GetAllCategory().then(setCategoryList(categoryList.filter(x => x.categoryId != id)));
-        CategoryService.DeleteCategory(id);
+        var result = window.confirm("Want to delete?");
+        if (result){
+            CategoryService.DeleteCategory(id).then(response => {
+                console.log({response});
+                if (response.status == 200){
+                    CategoryService.GetAllCategory().then(setCategoryList(categoryList.filter(x => x.categoryId != id)));
+                }
+                else 
+                    window.alert("There are still products in the category");
+            });
+        }
+        
+        
     }
-
+    
     return (
         <div className="container">
             <div>
